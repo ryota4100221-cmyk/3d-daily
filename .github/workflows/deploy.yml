@@ -1,0 +1,67 @@
+name: Deploy 3D Daily
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同時実行は1つに（cronのpushが連続しても最新だけ反映）
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build every day app + assemble site
+        run: |
+          set -e
+          mkdir -p _site/days
+          touch _site/.nojekyll
+          for dir in days/*/; do
+            name=$(basename "$dir")
+            case "$name" in
+              [0-9][0-9][0-9]_*) ;;   # NNN_slug のフォルダだけ対象
+              *) continue ;;
+            esac
+            if [ ! -f "$dir/package.json" ]; then
+              echo "skip $name (no package.json)"; continue
+            fi
+            echo "::group::build $name"
+            ( cd "$dir"
+              if [ -f package-lock.json ]; then npm ci; else npm install; fi
+              npm run build )
+            mkdir -p "_site/days/$name"
+            cp -r "$dir/dist/." "_site/days/$name/"
+            [ -f "$dir/preview.png" ] && cp "$dir/preview.png" "_site/days/$name/preview.png" || true
+            echo "::endgroup::"
+          done
+
+      - name: Build gallery index
+        run: node scripts/build-gallery.mjs . _site
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
