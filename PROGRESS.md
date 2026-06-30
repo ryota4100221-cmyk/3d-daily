@@ -5,3 +5,4 @@
 | 日付 | No. | テーマ | フォルダ | 学んだ技法 / 一言 |
 |------|-----|--------|----------|-------------------|
 | 2026-06-30 | 001 | プリミティブ群（★1） | days/001_primitives | 3点ライティング / shadowMaterialの床 / マテリアル対比 / ミニマル英語タイポ構図 |
+| 2026-06-30 | 002 | マテリアル比較（★1） | days/002_materials | Lightformer手続きIBL / physical clearcoat / toon gradientMap自作 / metalness×roughnessグリッド / drei Text(ローカルフォント同梱) |
