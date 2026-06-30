@@ -26,6 +26,14 @@
    起動: cd して npm run dev で確認できます
    ```
    プレビューが撮れていれば画像も添付。
+9. **Notion「デザインインプット（自動収集）」DBに1行追記**（データソース `collection://e7229880-2f1c-456f-873e-f8fe3d6cb36d` / ページID `4c5856ef07fb4842859bde72076addee`）。
+   - タイトル = `Day NNN — <テーマ名>（R3F）`
+   - 種別 = `3D Daily`（既存selectオプション）
+   - 日付 = 今日
+   - 使用技術 = 今日の主な技法（例: R3F / InstancedMesh / GLSLシェーダ）
+   - 参照URL = `https://github.com/ryota4100221-cmyk/3d-daily/tree/main/days/NNN_xxx`
+   - 参照サイト = 参考にしたサイト名（あれば）
+   - 本文 = 今日の狙い・学び・次に試したいこと（数行）
 
 ## 原則
 - 1回の起動で1テーマ。完走できなくても、できたところまでコミット相当の状態で残し、PROGRESS/Slackに「途中・残タスク」を明記。
