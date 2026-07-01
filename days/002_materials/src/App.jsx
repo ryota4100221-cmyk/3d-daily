@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import Scene from './Scene.jsx'
@@ -13,7 +14,9 @@ export default function App() {
       >
         <color attach="background" args={['#f4f2ee']} />
         <fog attach="fog" args={['#f4f2ee', 22, 42]} />
-        <Scene />
+        <Suspense fallback={null}>
+          <Scene />
+        </Suspense>
         <OrbitControls
           target={[0, 1.4, 0]}
           enablePan={false}

@@ -4,11 +4,15 @@ import {
   Environment,
   Lightformer,
   ContactShadows,
-  Text,
   Float,
 } from '@react-three/drei'
 import * as THREE from 'three'
-import fontUrl from './fonts/liberationSans.js'
+import SafeText from './SafeText.jsx'
+
+// Real .ttf asset served from /public — troika loads it reliably (data-URI fonts
+// failed to load in-worker and blanked the whole scene). BASE_URL keeps it valid
+// under the GitHub Pages sub-path.
+const fontUrl = `${import.meta.env.BASE_URL}liberationSans.ttf`
 
 // Restrained palette — warm paper + graphite, one terracotta accent.
 const PALETTE = {
@@ -69,7 +73,7 @@ function MetalRoughGrid({ position }) {
       ))}
 
       {/* Axis labels — English typographic captions, monaka-minimal. */}
-      <Text
+      <SafeText
         font={fontUrl}
         position={[0, -span / 2 - 1.0, 0]}
         fontSize={0.26}
@@ -78,8 +82,8 @@ function MetalRoughGrid({ position }) {
         anchorX="center"
       >
         ROUGHNESS  →
-      </Text>
-      <Text
+      </SafeText>
+      <SafeText
         font={fontUrl}
         position={[-span / 2 - 1.0, 0, 0]}
         rotation={[0, 0, Math.PI / 2]}
@@ -89,7 +93,7 @@ function MetalRoughGrid({ position }) {
         anchorX="center"
       >
         METALNESS  →
-      </Text>
+      </SafeText>
     </group>
   )
 }
@@ -146,7 +150,7 @@ function HeroColumn({ position, gradientMap }) {
             <Float speed={1.4} rotationIntensity={0} floatIntensity={0.5} floatingRange={[-0.06, 0.06]}>
               <MaterialHero kind={row.kind} color={row.color} gradientMap={gradientMap} />
             </Float>
-            <Text
+            <SafeText
               font={fontUrl}
               position={[1.05, 0, 0]}
               fontSize={0.2}
@@ -156,7 +160,7 @@ function HeroColumn({ position, gradientMap }) {
               anchorY="middle"
             >
               {row.label}
-            </Text>
+            </SafeText>
           </group>
         )
       })}
