@@ -31,7 +31,7 @@
    - 種別 = `3D Daily`（既存selectオプション）
    - 日付 = 今日
    - 使用技術 = 今日の主な技法（例: R3F / InstancedMesh / GLSLシェーダ）
-   - 参照URL = `https://github.com/ryota4100221-cmyk/3d-daily/tree/main/days/NNN_xxx`
+   - 参照URL = `https://ryota4100221-cmyk.github.io/3d-daily/days/NNN_xxx/`（GitHub Pagesで公開される**その場で動くデモURL**。ソースは本文にGitHubリンクを添える）
    - 参照サイト = 参考にしたサイト名（あれば）
    - 本文 = 今日の狙い・学び・次に試したいこと（数行）
 
