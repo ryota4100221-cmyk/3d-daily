@@ -9,3 +9,4 @@
 | 2026-07-01 | 003 | 環境光とHDRI（★2） | days/003_environment | Environment preset(HDRI/IBL) / ErrorBoundary+Suspenseで手続きスタジオへ堅牢フォールバック / MeshReflectorMaterial鏡面フロア / ターンテーブル自動回転 / 高キー環境でクローム物撮り |
 | 2026-07-02 | 004 | 影と床（★2） | days/004_shadows | AccumulativeShadows+RandomizedLight(8灯を時間蓄積した物理的ペナンブラ) / 静物は完全静止・動きはスローカメラのみ / 低いraking lightで余白へ伸びる影 / マット石膏マテリアル / 手続きIBLのみでHDRIフェッチ廃止 |
 | 2026-07-03 | 005 | インスタンシング入門（★2） | days/005_instancing | InstancedMesh 1ドローで2,304本のピラー / useFrameで毎フレームsetMatrixAt+setColorAt / ガウス×正弦の放射状ウェーブ / per-instanceカラーで高さ→トーン / scratch使い回しでGC回避 / 静的データはuseMemo / ContactShadowsで接地 |
+| 2026-07-04 | 006 | タイポグラフィ3D（★2） | days/006_typography | Text3D(押し出し+面取り)で"TYPE"を主役化 / typeface JSONのha(advance)から手動グリフレイアウト / 1文字=1 Text3Dでper-glyphフロート(位相ずらし正弦) / 弱いヨー・スウェイ / ローカル書体JSON(CDN禁) / meshPhysical陶器質感 / camera距離×fov×語幅で余白設計 |
