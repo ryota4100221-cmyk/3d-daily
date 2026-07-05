@@ -10,3 +10,4 @@
 | 2026-07-02 | 004 | 影と床（★2） | days/004_shadows | AccumulativeShadows+RandomizedLight(8灯を時間蓄積した物理的ペナンブラ) / 静物は完全静止・動きはスローカメラのみ / 低いraking lightで余白へ伸びる影 / マット石膏マテリアル / 手続きIBLのみでHDRIフェッチ廃止 |
 | 2026-07-03 | 005 | インスタンシング入門（★2） | days/005_instancing | InstancedMesh 1ドローで2,304本のピラー / useFrameで毎フレームsetMatrixAt+setColorAt / ガウス×正弦の放射状ウェーブ / per-instanceカラーで高さ→トーン / scratch使い回しでGC回避 / 静的データはuseMemo / ContactShadowsで接地 |
 | 2026-07-04 | 006 | タイポグラフィ3D（★2） | days/006_typography | Text3D(押し出し+面取り)で"TYPE"を主役化 / typeface JSONのha(advance)から手動グリフレイアウト / 1文字=1 Text3Dでper-glyphフロート(位相ずらし正弦) / 弱いヨー・スウェイ / ローカル書体JSON(CDN禁) / meshPhysical陶器質感 / camera距離×fov×語幅で余白設計 |
+| 2026-07-05 | 007 | Week1まとめ・Flow Field（★2） | days/007_flowfield | Day005を1段磨き直し / 依存ゼロfBm value-noise(整数ハッシュ+quintic)で有機的な流れ場 / 勾配2点サンプルでper-instanceヨー→流れのgrain / 高さ・色・回転をper-instance書込(1ドロー) / 円形プレート+smoothstepエッジフェード / capsuleブレード / hemisphereライト+emissive輝度フロアでハイキー堅牢化(IBL非依存) / ほぼ俯瞰の地形図構図 |
