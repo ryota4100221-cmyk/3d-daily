@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap');
+
+:root {
+  --paper: #eceae5;
+  --ink: #17171a;
+  --muted: #8f8b83;
+  --line: rgba(23, 23, 26, 0.14);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: var(--paper);
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+.canvas-wrap {
+  position: fixed;
+  inset: 0;
+}
+
+/* --- Typographic overlay (monaka-style minimal) --- */
+.overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  padding: clamp(24px, 5vw, 64px);
+  display: flex;
+  flex-direction: column;
+}
+
+.overlay .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.lower {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(18px, 3.5vh, 40px);
+}
+
+.brand {
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.day-tag {
+  font-weight: 300;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+/* thin index number, top-right — editorial touch */
+.index {
+  font-weight: 300;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  color: var(--muted);
+}
+
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+.title {
+  font-weight: 300;
+  font-size: clamp(34px, 6.5vw, 92px);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+}
+
+.title em {
+  font-style: italic;
+  color: var(--muted);
+}
+
+.meta {
+  display: flex;
+  gap: 40px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.meta .label {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.meta .value {
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+
+.hint {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* faint framing hairline, Awwwards-ish restraint */
+.frame {
+  position: fixed;
+  inset: clamp(14px, 2.4vw, 30px);
+  border: 1px solid var(--line);
+  pointer-events: none;
+  z-index: 9;
+}
