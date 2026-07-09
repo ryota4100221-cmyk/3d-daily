@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap');
+
+:root {
+  --paper: #eceae5;
+  --ink: #17171a;
+  --muted: #8f8b83;
+  --accent: #c1673f;
+  --line: rgba(23, 23, 26, 0.14);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: var(--paper);
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+.canvas-wrap {
+  position: fixed;
+  inset: 0;
+}
+
+/* ScrollControls injects a scrollable div; make its scrollbar disappear so the
+   experience reads as one continuous page (monaka-style restraint). */
+.canvas-wrap ::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* ── Scroll-synced chapters (rendered inside <Scroll html>) ─────────────── */
+.chapter {
+  width: 100vw;
+  height: 100vh;
+  padding: clamp(24px, 6vw, 92px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.chapter.right {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.chapter .eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+
+.chapter .big {
+  font-weight: 300;
+  font-size: clamp(48px, 11vw, 168px);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+}
+
+.chapter .big em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.chapter .lede {
+  margin-top: 22px;
+  max-width: 34ch;
+  font-weight: 300;
+  font-size: clamp(13px, 1.5vw, 16px);
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.chapter.right .lede {
+  margin-left: auto;
+}
+
+/* ── Fixed editorial furniture (outside the scroll flow) ─────────────────── */
+.frame {
+  position: fixed;
+  inset: clamp(14px, 2.4vw, 30px);
+  border: 1px solid var(--line);
+  pointer-events: none;
+  z-index: 20;
+}
+
+.hud {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 21;
+  padding: clamp(24px, 5vw, 64px);
+  display: flex;
+  flex-direction: column;
+}
+
+.hud .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.brand {
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.index {
+  font-weight: 300;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  color: var(--muted);
+}
+
+.scroll-cue {
+  margin-top: auto;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: opacity 0.6s ease;
+}
+
+.scroll-cue .bar {
+  width: 1px;
+  height: 46px;
+  background: linear-gradient(var(--muted), transparent);
+  animation: cue 1.9s ease-in-out infinite;
+  transform-origin: top;
+}
+
+@keyframes cue {
+  0%,
+  100% {
+    transform: scaleY(0.3);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+/* thin scroll progress rail, bottom edge — the one live meter */
+.progress {
+  position: fixed;
+  left: clamp(14px, 2.4vw, 30px);
+  right: clamp(14px, 2.4vw, 30px);
+  bottom: clamp(14px, 2.4vw, 30px);
+  height: 1px;
+  background: var(--line);
+  z-index: 22;
+  pointer-events: none;
+}
+
+.progress span {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0%;
+  background: var(--accent);
+}
