@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap');
+
+:root {
+  --paper: #eceae5;
+  --ink: #17171a;
+  --muted: #8f8b83;
+  --accent: #c1673f;
+  --line: rgba(23, 23, 26, 0.14);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: var(--paper);
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+.canvas-wrap {
+  position: fixed;
+  inset: 0;
+}
+
+/* ── Fixed editorial furniture (over the canvas) ─────────────────────────── */
+.frame {
+  position: fixed;
+  inset: clamp(14px, 2.4vw, 30px);
+  border: 1px solid var(--line);
+  pointer-events: none;
+  z-index: 20;
+}
+
+.hud {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 21;
+  padding: clamp(24px, 5vw, 64px);
+  display: flex;
+  flex-direction: column;
+}
+
+.hud .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.brand {
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.index {
+  font-weight: 300;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  color: var(--muted);
+}
+
+.titleblock {
+  margin-top: auto;
+  margin-bottom: auto;
+  max-width: 36ch;
+}
+
+.big {
+  font-weight: 300;
+  font-size: clamp(56px, 12vw, 172px);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+}
+
+.big em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.lede {
+  margin-top: 22px;
+  max-width: 34ch;
+  font-weight: 300;
+  font-size: clamp(13px, 1.5vw, 16px);
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.cue {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.cue .bar {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(var(--muted), transparent);
+  animation: cue 2.2s ease-in-out infinite;
+  transform-origin: top;
+}
+
+@keyframes cue {
+  0%,
+  100% {
+    transform: scaleY(0.3);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+.footline {
+  position: fixed;
+  left: clamp(24px, 5vw, 64px);
+  right: clamp(24px, 5vw, 64px);
+  bottom: clamp(24px, 5vw, 64px);
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  z-index: 21;
+  pointer-events: none;
+}
