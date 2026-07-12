@@ -1,0 +1,105 @@
+:root {
+  --paper: #ece7dd;
+  --ink: #26241f;
+  --muted: #8c877c;
+  --accent: #c66a3f;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--paper);
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+canvas { display: block; touch-action: none; }
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.hud-top {
+  position: absolute;
+  top: clamp(20px, 4vw, 44px);
+  left: clamp(20px, 4vw, 44px);
+  right: clamp(20px, 4vw, 44px);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.mark {
+  font-size: clamp(11px, 1.1vw, 13px);
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.day {
+  font-size: clamp(11px, 1.1vw, 13px);
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.hud-title {
+  position: absolute;
+  left: clamp(20px, 4vw, 44px);
+  bottom: clamp(24px, 5vw, 56px);
+  max-width: 620px;
+}
+
+.hud-title h1 {
+  font-size: clamp(40px, 9vw, 132px);
+  line-height: 0.92;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.hud-title h1 em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.hud-title p {
+  margin-top: clamp(14px, 2vw, 22px);
+  max-width: 40ch;
+  font-size: clamp(12px, 1.25vw, 15px);
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+  color: var(--muted);
+}
+
+.hud-hint {
+  position: absolute;
+  right: clamp(20px, 4vw, 44px);
+  bottom: clamp(24px, 5vw, 56px);
+  text-align: right;
+  font-size: clamp(10px, 1vw, 12px);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.hud-hint span { display: block; }
+.hud-hint .k { color: var(--ink); font-weight: 600; }
+
+.hud-hint .now {
+  margin-bottom: 12px;
+  font-size: clamp(13px, 1.5vw, 18px);
+  letter-spacing: 0.32em;
+}
+.hud-hint .now .k { color: var(--accent); }
