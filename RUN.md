@@ -40,6 +40,12 @@
 ## 品質チェック（公開前に必須）
 - **Canvasが真っ白になる罠**：R3F v8の`<Canvas>`は子を自動で`<Suspense>`で包まない。`<Text>`(troika)や`Environment`等の**サスペンドするコンポーネントが読み込み失敗するとScene全体がクラッシュ**し、HTMLのoverlayだけ残って3Dが全部消える。対策：①`<Text>`はフォントを**data URIではなく`public/`の実.ttf**で読む（`font={import.meta.env.BASE_URL+'xxx.ttf'}`）②サスペンドする要素は個別にSuspense+エラー境界で包み、失敗しても3D本体は残す。
 - **公開後の目視確認**：`npm run build`だけでなく、ヘッドレスChromeで実描画を1枚撮って「3Dオブジェクトが映っているか」を必ず確認する（ビルド成功≠描画成功）。
+- **headlessの空カンバス誤診**：同じ`--virtual-time-budget`でも成功したり空カンバスになったりする（Day018/024/026/027で再発）。空カンバスのPNGは極端に小さい（1600x1000で約28KB）ので、**バイト数が閾値未満ならリトライ**するループにすると確実。11000〜12000msが比較的安定。
+- **構図は実描画でしか分からない**：DOMオーバーレイの見出しと3Dオブジェクトの衝突はビルドでは検出されない（Day027で発生）。撮った1枚は必ず目で見る。
+
+## 環境の癖（毎回ハマるので先に読む）
+- **起動時に detached HEAD になっていることがある**（Day021・Day027で発生）。`git rev-parse --abbrev-ref HEAD` が `HEAD` を返したらこれ。ローカル`main`は数日前で止まっており、そのまま`git push origin main`すると「behind its remote counterpart」で必ず弾かれる。**対処**：`git fetch origin main` → `git checkout main` → `git merge --ff-only <作業commit>` → push。作業コミット自体はorigin/mainの直上にあるので早送りで済む。
+- **`ryota4100221-cmyk.github.io` はこの実行環境から到達できない**（curlが全部HTTP 000。egress制限で、`hooks.slack.com`が403になるのと同種）。**デプロイ確認をURLのポーリングでやろうとしても必ず失敗する**ので時間を捨てないこと。確認するならGitHub MCPの`actions_list`でワークフローrunのconclusionを見る（27日分ビルドして概ね3〜4分でsuccess）。
 
 ## 原則
 - 1回の起動で1テーマ。完走できなくても、できたところまでコミット相当の状態で残し、PROGRESS/Slackに「途中・残タスク」を明記。

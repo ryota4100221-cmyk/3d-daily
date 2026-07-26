@@ -120,7 +120,16 @@ const x = (((lin + half) % total) + total) % total - half
    2回成功→2回blank（28,453バイトの空カンバス）。8000は空、11000〜11500は安定。
    Day018/024/026と同じ症状で、**バイト数で成否を判定してリトライする**のが確実
    （空カンバスはPNGが極端に小さい）
-6. **速度演出は静止画では検証できない**。headlessの `--screenshot` はドラッグもフリックもできないので、
+6. **起動時に detached HEAD**（Day021と同じ）。ローカル`main`はDay023で止まっており、
+   HEADはDay026＋今日のコミットを持つ状態。`git push origin main` は
+   「behind its remote counterpart」で2回弾かれた。
+   `git checkout main && git merge --ff-only <commit>` で早送りして解決。RUN.mdに手順を追記した
+7. **GitHub Pagesのデプロイ確認をURLポーリングでやろうとして800秒を捨てた**。
+   この実行環境から `ryota4100221-cmyk.github.io` は到達不能（root・前日ページ含め全部HTTP 000）。
+   egress制限で、`hooks.slack.com`が403になるのと同種。
+   デプロイ確認はGitHub MCPの`actions_list`でワークフローのconclusionを見るのが正解
+   （実際、今日のrunは3分4秒でsuccessしていた）
+8. **速度演出は静止画では検証できない**。headlessの `--screenshot` はドラッグもフリックもできないので、
    `?speed=-1..1` で速度uniformを直接ピン留めするデバッグパラメータを追加した
    （Day023 `?grade` / Day025 `?t` の系譜）。`?drift=N` でオートドリフト倍率も上げられるが、
    virtual-timeの窓が短くて帯が動ききらないため、検証には `?speed` の方が確実
