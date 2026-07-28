@@ -1,0 +1,137 @@
+:root {
+  --dusk: #151a21;
+  --paper: #e9e3d7;
+  --terra: #d2764c;
+  --muted: rgba(233, 227, 215, 0.56);
+  --faint: rgba(233, 227, 215, 0.32);
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; }
+body {
+  background: var(--dusk);
+  color: var(--paper);
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+.app { position: fixed; inset: 0; }
+canvas { display: block; }
+
+.ui {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  padding: clamp(20px, 3.1vw, 46px);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.top { display: flex; justify-content: space-between; align-items: flex-start; }
+.mark, .day {
+  font-size: 11px;
+  letter-spacing: 0.34em;
+  font-weight: 600;
+  color: var(--muted);
+}
+.day { color: var(--terra); }
+
+/* the headline sits in the dusk sky; the water owns the bottom of the frame */
+.lead {
+  align-self: start;
+  margin-top: clamp(24px, 5vh, 64px);
+  max-width: 46ch;
+}
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  font-weight: 600;
+  color: var(--terra);
+  margin-bottom: 0.95em;
+  text-transform: uppercase;
+}
+.lead h1 {
+  margin: 0;
+  font-size: clamp(46px, 8.4vw, 116px);
+  line-height: 0.84;
+  font-weight: 700;
+  letter-spacing: -0.038em;
+  color: var(--paper);
+}
+.lead h1 em { color: var(--terra); font-style: normal; }
+.lead .sub {
+  margin: 1.25em 0 0;
+  font-size: clamp(11.5px, 1.02vw, 13.5px);
+  color: var(--muted);
+  max-width: 42ch;
+  line-height: 1.65;
+}
+
+.bottom {
+  align-self: end;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 28px;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 9.5px;
+  letter-spacing: 0.22em;
+  color: var(--faint);
+  text-transform: uppercase;
+}
+.meta span:first-child { color: var(--muted); }
+
+.passes { pointer-events: auto; text-align: right; }
+.passes-label {
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-bottom: 10px;
+}
+.passes ul { list-style: none; margin: 0; padding: 0; }
+.passes li {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 3px 0;
+  cursor: pointer;
+  color: var(--faint);
+  transition: color 0.25s ease;
+}
+.passes li:hover { color: var(--muted); }
+.passes li.on { color: var(--paper); }
+.passes li.on .idx { color: var(--terra); }
+.passes .idx {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  order: 3;
+  width: 1.2em;
+  text-align: right;
+}
+.passes .name {
+  order: 2;
+  font-size: 11.5px;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+}
+.passes .note {
+  order: 1;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+@media (max-width: 720px) {
+  .lead .sub { display: none; }
+  .passes .note { display: none; }
+  .meta span:not(:first-child) { display: none; }
+}
