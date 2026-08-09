@@ -152,7 +152,7 @@ result = ltcClip(Σ w_i e_i)  ×  L̄(uv, lod)
 - ヘッドレス（Chromium headless_shell / SwiftShader / 1600x1000 / `--no-sandbox`）で
   実描画を確認。空カンバス閾値 250KB、正常は約 1.7MB。撮った絵は全部目で見た。
   virtual-time は 11.9s で概ね通るが、2回に1回ほど 109KB で返るので 13.5s / 16.0s へ
-  上げるリトープを `scripts/shot.mjs` に入れた（Day 040 の NOTES の再発予防）。
+  上げるリトライを `scripts/shot.mjs` に入れた（Day 040 の NOTES の再発予防）。
 - 同じ `?t=26` で並べて主張を確認：
   - `?pass=1`：手前の漆板に**2つのバラ窓と鉛桟**。奥の板は1色。
   - `?pass=8`（Day 040 の6定数）：**同じ形・同じ影・同じ露出**で、窓が平らになる。
