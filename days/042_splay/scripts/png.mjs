@@ -1,0 +1,53 @@
+// A minimal truecolour PNG writer, lifted out of glass-preview.mjs on Day 042
+// because there are now two scripts that want to look at the lamp and neither of
+// them should carry a copy of a CRC table.
+import { writeFileSync } from 'node:fs'
+import { deflateSync } from 'node:zlib'
+
+let TABLE = null
+function crc32(buf) {
+  if (!TABLE) {
+    TABLE = new Int32Array(256)
+    for (let n = 0; n < 256; n++) {
+      let c = n
+      for (let k = 0; k < 8; k++) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1
+      TABLE[n] = c
+    }
+  }
+  let c = -1
+  for (let i = 0; i < buf.length; i++) c = TABLE[(c ^ buf[i]) & 0xff] ^ (c >>> 8)
+  return c ^ -1
+}
+
+function chunk(type, data) {
+  const len = Buffer.alloc(4)
+  len.writeUInt32BE(data.length)
+  const body = Buffer.concat([Buffer.from(type, 'ascii'), data])
+  const crc = Buffer.alloc(4)
+  crc.writeUInt32BE(crc32(body) >>> 0)
+  return Buffer.concat([len, body, crc])
+}
+
+/** rgb is w*h*3 bytes, row 0 at the top. */
+export function writePng(path, w, h, rgb) {
+  const stride = w * 3
+  const raw = Buffer.alloc(h * (stride + 1))
+  for (let y = 0; y < h; y++) {
+    raw[y * (stride + 1)] = 0 // filter: none
+    Buffer.from(rgb.buffer, rgb.byteOffset + y * stride, stride).copy(raw, y * (stride + 1) + 1)
+  }
+  const ihdr = Buffer.alloc(13)
+  ihdr.writeUInt32BE(w, 0)
+  ihdr.writeUInt32BE(h, 4)
+  ihdr[8] = 8 // bit depth
+  ihdr[9] = 2 // truecolour
+  writeFileSync(
+    path,
+    Buffer.concat([
+      Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]),
+      chunk('IHDR', ihdr),
+      chunk('IDAT', deflateSync(raw)),
+      chunk('IEND', Buffer.alloc(0)),
+    ])
+  )
+}
