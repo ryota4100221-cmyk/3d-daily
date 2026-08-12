@@ -1,0 +1,27 @@
+{
+  "name": "day-044-taper",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "lint:glsl": "node scripts/glsl-lint.mjs",
+    "preview:rip": "node scripts/rip-preview.mjs",
+    "error:aniso": "node scripts/aniso-error.mjs",
+    "error:lobe": "node scripts/lobe-error.mjs 1024 384",
+    "prebuild": "node scripts/glsl-lint.mjs",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@react-three/drei": "^9.114.3",
+    "@react-three/fiber": "^8.17.10",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "three": "^0.169.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.3",
+    "vite": "^5.4.10"
+  }
+}
