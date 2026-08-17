@@ -1,0 +1,174 @@
+/* Day 049 — 白地・余白・欧文。再現元 OASIZ の実測値を借りている:
+   左余白 102px / 本文 14px / 行間 150% / 版面幅 1076px / 見出しは 180px まで振る。 */
+
+:root {
+  --ground: #f4f4f4;
+  --ink: #101410;
+  --dim: #8b918b;
+  --green: #00f04b;
+  --gutter: 102px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background: var(--ground);
+  color: var(--ink);
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+.app {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+canvas {
+  display: block;
+}
+
+.ui {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* 下端の帯にだけシリーズの表記を置く。上端は極大文字のためだけに空けておく。 */
+.mark {
+  font-weight: 500;
+  color: #20251f;
+}
+
+/* 極大の欧文をベースラインで切って上へ逃がす（再現元の文字の置き方） */
+.giant {
+  position: absolute;
+  top: -26px;
+  left: calc(var(--gutter) - 9px);
+  font-size: 146px;
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  color: var(--ink);
+}
+
+.jp {
+  position: absolute;
+  top: 104px;
+  left: calc(var(--gutter) + 486px);
+  font-size: 15px;
+  letter-spacing: 0.14em;
+  color: #3a403a;
+}
+
+/* 左の1カラム */
+.col {
+  position: absolute;
+  top: 196px;
+  left: var(--gutter);
+  width: 300px;
+  font-size: 14px;
+  line-height: 150%;
+  color: #2a2f2a;
+}
+
+.col p + p {
+  margin-top: 14px;
+}
+
+.kicker {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--green);
+  filter: brightness(0.82);
+  margin-bottom: 16px !important;
+}
+
+.mono {
+  font-family: 'SF Mono', ui-monospace, Menlo, monospace;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  padding: 10px 0;
+  border-top: 1px solid #dfe2df;
+  border-bottom: 1px solid #dfe2df;
+}
+
+.sub {
+  font-size: 0.72em;
+  vertical-align: -0.25em;
+}
+
+.sup {
+  font-size: 0.72em;
+  vertical-align: 0.45em;
+}
+
+em {
+  font-style: italic;
+}
+
+/* 右下の計器 */
+.legend {
+  position: absolute;
+  right: var(--gutter);
+  bottom: 84px;
+  width: 372px;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--dim);
+  text-align: right;
+}
+
+.legend .row {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 5px 0;
+  border-top: 1px solid #e4e7e4;
+}
+
+.legend b {
+  font-weight: 500;
+  color: #20251f;
+  letter-spacing: 0.08em;
+}
+
+.legend .dim,
+.dim {
+  color: #a8ada8;
+}
+
+/* 下端の帯 */
+.foot {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: 34px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: var(--dim);
+  border-top: 1px solid #dfe2df;
+  padding-top: 12px;
+}
+
+/* vθ(r) のプロット */
+.plot {
+  display: block;
+  margin-top: 20px;
+  overflow: visible;
+}
