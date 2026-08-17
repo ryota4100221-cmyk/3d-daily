@@ -15,8 +15,10 @@
    - 🔴 **前日フォルダの `src/` をコピーしない。** 設定ファイル（`package.json` / `vite.config.js` /
      `index.html` / `main.jsx`）だけ持ってきて、`Scene.jsx` `rig.js` `App.jsx` は**毎日白紙から書く**。
      これが Day 031〜048 で18日間同じ絵が出続けた直接の原因（`rig.js` が10日間 md5 一致）。
-   - 過去の描画エンジンが要る日は **コピーせず `engine/` から import する**（`engine/README.md`）。
-     使う場合は `palette.js` の `LIGHT` / `WINDOW` / `SURF` を必ず今日の値に書き直す。
+   - 過去の描画エンジンが要る日は、`engine/` から**必要なファイルだけ `src/` にコピーする**
+     （`cp ../../engine/froxel.js src/`）。🔴 **相対 import は使わない** — `npm run build` は通るのに
+     `npm run dev` が 403→500 で落ちる（実測。理由は `engine/README.md`）。
+     `palette.js` を持ってきた日は `LIGHT` / `WINDOW` / `SURF` を必ず今日の値に書き直す。
    - スタック: **Vite + React + @react-three/fiber + @react-three/drei**（必要に応じ rapier/postprocessing を追加）。
 5. 今日の1本を実装する。守ること:
    - 🔴 **まず「昨日と別の絵」であること。技法の新しさはその次。**

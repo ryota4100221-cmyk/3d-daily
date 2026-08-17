@@ -28,16 +28,38 @@ Day 031 から Day 048 まで18日連続で、この1本の技術スレッドだ
 | `noise.js` | 3D value-noise ボリューム | Day 031 |
 | `palette.js` | ⚠️ 混在。`FROXEL` / `ATLAS` / `SCAN_STEPS` はエンジン設定、`LIGHT` / `WINDOW` / `SURF` は**あの作品固有の値** | — |
 
-## 使い方
+## 使い方 — 🔴 相対 import しない。必要なファイルだけ `src/` にコピーする
 
-`days/NNN_slug/src/` から相対 import する：
-
-```js
-import Pipeline from '../../../engine/Pipeline.jsx'
-import { FROXEL } from '../../../engine/palette.js'
+```bash
+# 例：ボリューメトリックだけ要る日
+cp ../../engine/froxel.js  ../../engine/noise.js  src/
 ```
 
-**エンジンを使う日は、`palette.js` の `LIGHT` / `WINDOW` / `SURF` を必ずその日の値に書き直す。**
+そして **その日に本当に使うものだけ**を持ってくる（全部コピーしない）。
+
+### なぜ import ではなくコピーなのか（2026-08-17 実測）
+
+`days/NNN/src/` から `../../../engine/` を相対 import すると、**`npm run build` は通るのに
+`npm run dev` で画面が出ない**。実際に Vite 5.4.21 で測ったら2段構えで落ちた：
+
+```
+① /@fs/…/engine/noise.js  →  403 Restricted
+   （Vite の server.fs.strict。日フォルダがプロジェクトルートなので、その外は配信しない）
+
+② server.fs.allow を足して 403 を消すと、今度は 500
+   Failed to resolve import "three" from "../../engine/noise.js"
+   （engine/ に node_modules が無く、Node は importer から上へ辿るので
+     days/NNN/node_modules を見に行かない）
+```
+
+ビルドは Rollup がバンドルするので通ってしまう＝**ビルド成功≠描画成功**の典型で、
+`preview.png` が空カンバスになって初めて気づく。毎朝の自動ルーティンにこれを踏ませない。
+
+コピーしてよいのは**この棚のファイルだけ**。🔴 **`Scene.jsx` / `rig.js` / `App.jsx`
+（＝その日の作品そのもの）は絶対にコピーしない。毎日白紙から書く。**
+Day 031〜048 が18日間同じ絵になったのは、まさにそこをコピーしていたから。
+
+**`palette.js` を持ってきた日は、`LIGHT` / `WINDOW` / `SURF` を必ずその日の値に書き直す。**
 そのままだと Day 048 の暗い部屋と窓がそのまま出てくる（＝また同じ絵になる）。
 
 ## 使うときの1条件
