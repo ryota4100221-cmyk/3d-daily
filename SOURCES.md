@@ -15,6 +15,7 @@
 |------|-----|-----------|----------|---------------|
 | — | — | — | — | （Day 049 からここに積む） |
 | 2026-08-18 | Day 049 · days/049_vortex | https://oasiz.org/ | 株式会社OASIZ | 渦芯（vortex spine）— 接線速度が芯半径 rc で折り返す場と、それを見せる26点の尾 |
+| 2026-08-19 | Day 050 · days/050_fusion | https://podium.global/ | Podium | 融合しきい値（fusion threshold）— gap が k を下回った所にだけ首が生える smin 1本 |
 
 ---
 
