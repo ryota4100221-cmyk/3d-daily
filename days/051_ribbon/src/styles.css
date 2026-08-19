@@ -1,0 +1,153 @@
+/* styles.css — Day 051 / Ribbon
+   黒地に白い帯が1本。文字はすべて欧文・全大文字・字間広め、色は白と灰の2段だけ。
+   差し色を持たないのは再現元と同じ（あのサイトの唯一の有彩色はカードの角の小さな三角だけ）。 */
+
+:root {
+  --ink: #f2f2ef;
+  --dim: #6d6f6c;
+  --faint: #34362f;
+  --sans: 'Helvetica Neue', Helvetica, Arial, 'Segoe UI', system-ui, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  background: #000;
+}
+
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.stage canvas {
+  display: block;
+}
+
+/* 再現元から借りた唯一の構図: 画面下端でベースラインを切った巨大な1語。
+   帯より手前には出さない（z を canvas の上に置くが、色は地から3段しか上げない）。 */
+.crop {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2.4vw;
+  text-align: center;
+  pointer-events: none;
+  overflow: hidden;
+  line-height: 0.78;
+}
+
+.crop span {
+  font-size: 18.5vw;
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  color: #0d0e0d;
+}
+
+.ui {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  padding: 34px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+h1 {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.42em;
+}
+
+.sub {
+  margin-top: 7px;
+  color: var(--dim);
+}
+
+.right {
+  text-align: right;
+  line-height: 1.9;
+}
+
+.dim {
+  color: var(--dim);
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+}
+
+.claim p {
+  line-height: 2;
+}
+
+.claim i {
+  font-style: italic;
+  letter-spacing: 0.04em;
+}
+
+.meter {
+  min-width: 268px;
+  text-align: right;
+}
+
+.meter .row {
+  display: flex;
+  justify-content: space-between;
+  gap: 26px;
+  line-height: 1.95;
+}
+
+.meter .row span {
+  color: var(--dim);
+}
+
+.meter .row b {
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.bar {
+  margin: 10px 0 9px;
+  height: 1px;
+  background: var(--faint);
+}
+
+.bar i {
+  display: block;
+  height: 100%;
+  background: var(--ink);
+}
+
+.hint {
+  color: var(--dim);
+  font-size: 10px;
+}
