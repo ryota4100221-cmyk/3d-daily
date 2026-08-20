@@ -17,6 +17,7 @@
 | 2026-08-18 | Day 049 · days/049_vortex | https://oasiz.org/ | 株式会社OASIZ | 渦芯（vortex spine）— 接線速度が芯半径 rc で折り返す場と、それを見せる26点の尾 |
 | 2026-08-19 | Day 050 · days/050_fusion | https://podium.global/ | Podium | 融合しきい値（fusion threshold）— gap が k を下回った所にだけ首が生える smin 1本 |
 | 2026-08-20 | Day 051 · days/051_ribbon | https://www.penguin-capital.co.jp/ | Penguin Capital（ペンギン・キャピタル） | ロール露光（roll exposure）— 幅は一定のまま φ(s) だけが明暗を決める。RMF のホロノミー 52.2° を均して初めて「整数回転なら閉じる」が成り立つ |
+| 2026-08-21 | Day 052 · days/052_kraft | https://meesverberne.com/ | Mees Verberne — Creative Developer | しきい値の潮（threshold tide）— 高さ場は一度組んだら二度と動かさず、秩序ディザのしきい値に sin の波とポインタの隆起を足す。絵は静止したまま段の境界だけが通り過ぎる |
 
 ---
 

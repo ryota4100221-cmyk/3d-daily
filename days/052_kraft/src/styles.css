@@ -1,0 +1,61 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: #d7c6ad;
+  color: #22264b;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.stage {
+  position: relative;
+  height: 100%;
+}
+
+.stage canvas {
+  display: block;
+  /* 粒が主題なので、ブラウザ側の平滑化は全部切る */
+  image-rendering: pixelated;
+}
+
+.hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  padding: 26px 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  font-size: 10.5px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: #22264b;
+}
+
+.row.bottom {
+  align-items: flex-end;
+}
+
+.dim {
+  opacity: 0.5;
+  letter-spacing: 0.14em;
+  text-transform: none;
+}
