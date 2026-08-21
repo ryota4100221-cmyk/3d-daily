@@ -18,6 +18,7 @@
 | 2026-08-19 | Day 050 · days/050_fusion | https://podium.global/ | Podium | 融合しきい値（fusion threshold）— gap が k を下回った所にだけ首が生える smin 1本 |
 | 2026-08-20 | Day 051 · days/051_ribbon | https://www.penguin-capital.co.jp/ | Penguin Capital（ペンギン・キャピタル） | ロール露光（roll exposure）— 幅は一定のまま φ(s) だけが明暗を決める。RMF のホロノミー 52.2° を均して初めて「整数回転なら閉じる」が成り立つ |
 | 2026-08-21 | Day 052 · days/052_kraft | https://meesverberne.com/ | Mees Verberne — Creative Developer | しきい値の潮（threshold tide）— 高さ場は一度組んだら二度と動かさず、秩序ディザのしきい値に sin の波とポインタの隆起を足す。絵は静止したまま段の境界だけが通り過ぎる |
+| 2026-08-22 | Day 053 · days/053_triad | https://www.thetriadicballetai.com/ | The Triadic Ballet AI | 旋盤の身体（the lathe body）— 体は関節を持たず縦軸まわりの半径 r(t) だけでできている。3幕ぶんの profile を1枚の DataTexture の RGB に積み、頂点シェーダが幕の重み和で挽く。踊りは姿勢の変化ではなく輪郭の挽き直し |
 
 ---
 

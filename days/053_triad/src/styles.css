@@ -1,0 +1,150 @@
+/* 活字は舞台の外側にしか置かない。中央下の帯（三体が立っている場所）は空けておく。 */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  background: #0c0b0a;
+}
+
+.stage {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  --ink: #171208;
+}
+
+canvas {
+  display: block;
+}
+
+.type {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  color: var(--ink);
+  font-family: 'Helvetica Neue', Helvetica, Inter, 'Segoe UI', Arial, sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: color 120ms linear;
+}
+
+.fine {
+  font-size: 0.62rem;
+  letter-spacing: 0.26em;
+  opacity: 0.62;
+  font-weight: 500;
+}
+
+/* 上端を横切る1行。単語で切って字間を開ける（KH Type の組みの真似）。 */
+.banner {
+  position: absolute;
+  top: 2.6vh;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: clamp(0.6rem, 1.02vw, 1rem);
+  letter-spacing: 0.52em;
+  text-indent: 0.52em;
+  opacity: 0.78;
+}
+
+.banner .dot {
+  opacity: 0.4;
+  letter-spacing: 0.3em;
+}
+
+/* 幕番号。舞台の左肩に置き、頭より上で止める。 */
+.numeral {
+  position: absolute;
+  top: 8.5vh;
+  left: 3.4vw;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7vw;
+}
+
+.numeral .kicker {
+  font-size: 0.62rem;
+  letter-spacing: 0.3em;
+  opacity: 0.6;
+  padding-top: 0.85vh;
+}
+
+.numeral .roman {
+  font-family: 'Times New Roman', Times, Georgia, serif;
+  font-size: clamp(2.6rem, 6.6vw, 7rem);
+  line-height: 0.78;
+  letter-spacing: 0.02em;
+  font-weight: 400;
+}
+
+.credit {
+  position: absolute;
+  top: 8.5vh;
+  right: 3.4vw;
+  text-align: right;
+  font-size: 0.72rem;
+  letter-spacing: 0.34em;
+  line-height: 2.2;
+}
+
+/* 下端。幕の名前と、三幕のどこにいるかの1本の罫。 */
+.foot {
+  position: absolute;
+  left: 3.4vw;
+  bottom: 4.2vh;
+  width: 26vw;
+  min-width: 230px;
+}
+
+.foot .name {
+  font-size: clamp(0.72rem, 1.1vw, 1.05rem);
+  letter-spacing: 0.36em;
+  margin-bottom: 1.1vh;
+}
+
+.foot .rule {
+  height: 1px;
+  background: currentColor;
+  opacity: 0.28;
+  margin-bottom: 1.1vh;
+}
+
+.foot .rule span {
+  display: block;
+  height: 3px;
+  margin-top: -1px;
+  background: currentColor;
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+.cast {
+  position: absolute;
+  right: 3.4vw;
+  bottom: 4.2vh;
+  display: flex;
+  gap: 2.2vw;
+  font-size: 0.62rem;
+  letter-spacing: 0.26em;
+  opacity: 0.62;
+}
+
+.source {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 2.6vh;
+  text-align: center;
+  font-size: 0.58rem;
+  letter-spacing: 0.4em;
+  text-indent: 0.4em;
+  opacity: 0.4;
+}
