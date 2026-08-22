@@ -1,0 +1,76 @@
+/* 黒地に、金は1語だけ。文字は全部 sans の全大文字で、字間だけで階層を作る。 */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body, #root { width: 100%; height: 100%; background: #000; }
+body { overflow: hidden; }
+
+.stage { position: relative; width: 100%; height: 100%; }
+canvas { display: block; }
+
+/* 粒子。黒一色の絵は PNG が縮んで空カンバスと区別がつかなくなる（Day 051 の教訓）。
+   ここで足す粒は見た目のためでもあり、実描画であることの目印でもある。 */
+.grain {
+  position: absolute; inset: 0; pointer-events: none; opacity: 0.075;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='180' height='180' filter='url(%23n)'/></svg>");
+}
+
+.ui {
+  position: absolute; inset: 0; pointer-events: none;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #E8E2D6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.k {
+  font-size: 10px; letter-spacing: 0.34em; text-transform: uppercase;
+  color: #6A6357; margin-bottom: 9px;
+}
+
+.tl { position: absolute; top: 40px; left: 46px; }
+.tl .rule { width: 44px; height: 1px; background: #3A362F; margin-bottom: 20px; }
+.tl .t {
+  font-size: 15px; letter-spacing: 0.16em; text-transform: uppercase;
+  font-weight: 500; color: #CFC8BA;
+}
+
+.tr { position: absolute; top: 40px; right: 46px; text-align: right; }
+.tr .t2 {
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: #7D7568;
+}
+
+/* 読み値。全部 定数から引いた静的な数字（時間に依らない） */
+.rd {
+  position: absolute; top: 132px; right: 46px; width: 232px;
+  border-top: 1px solid #262320;
+}
+.rd .row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 7px 0; border-bottom: 1px solid #1A1815;
+  font-size: 10px; letter-spacing: 0.13em; text-transform: uppercase;
+}
+.rd .rk { color: #5D5750; }
+.rd .rv { color: #C6BFB2; font-variant-numeric: tabular-nums; }
+.rd .gold { color: #C8A060; }
+
+.bl { position: absolute; left: 46px; bottom: 44px; max-width: 620px; }
+.huge {
+  font-size: clamp(56px, 9.2vw, 148px);
+  line-height: 0.86;
+  letter-spacing: -0.045em;
+  font-weight: 700;
+  color: rgba(232, 226, 214, 0.15);
+  margin-bottom: 20px;
+}
+.lede {
+  font-size: 12.5px; line-height: 1.72; color: #837B6E;
+  max-width: 460px; letter-spacing: 0.015em;
+}
+
+.br {
+  position: absolute; right: 46px; bottom: 44px; text-align: right;
+  font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase; color: #4E4941;
+}
+.br span {
+  display: inline-block; color: #9C9488; margin-left: 16px;
+}
+.br span:first-child { margin-left: 0; }
+.br > span + span { margin-left: 22px; }
