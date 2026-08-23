@@ -1,0 +1,162 @@
+:root {
+  --albedo: #999593;
+  --ink: #1d1c1a;
+  --accent: #ebff00;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  background: var(--albedo);
+}
+
+body {
+  font-family: 'Helvetica Neue', Inter, 'Segoe UI', Arial, sans-serif;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.stage canvas {
+  display: block;
+}
+
+.ui {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* ── header ───────────────────────────────────────────────────────────── */
+header {
+  position: absolute;
+  top: 42px;
+  left: 46px;
+  right: 46px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+h1 {
+  font-size: 46px;
+  line-height: 0.86;
+  font-weight: 400;
+  letter-spacing: -0.022em;
+  text-transform: uppercase;
+  opacity: 0.92;
+}
+
+.meta {
+  display: flex;
+  gap: 26px;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.55;
+  padding-top: 6px;
+}
+
+/* ── edge ticks ───────────────────────────────────────────────────────── */
+.ticks {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 520px;
+  justify-content: space-between;
+}
+
+.ticks--left {
+  left: 46px;
+  align-items: flex-start;
+}
+
+.ticks--right {
+  right: 46px;
+  align-items: flex-end;
+}
+
+.ticks i {
+  display: block;
+  width: 7px;
+  height: 1px;
+  background: var(--ink);
+  opacity: 0.24;
+}
+
+.ticks i.long {
+  width: 17px;
+  opacity: 0.4;
+}
+
+/* ── footer ───────────────────────────────────────────────────────────── */
+footer {
+  position: absolute;
+  left: 46px;
+  right: 46px;
+  bottom: 40px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+footer p {
+  max-width: 460px;
+  font-size: 11.5px;
+  line-height: 1.75;
+  letter-spacing: 0.012em;
+  opacity: 0.62;
+}
+
+.sel {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* 蛍光色が乗ってよい唯一の場所。CLEND では Online Store ボタンとナビの
+   現在地だけがこの色で、それ以外はグレー1色だった。 */
+.sel b {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-weight: 500;
+  color: #111;
+  background: var(--accent);
+  padding: 7px 13px 6px;
+  border-radius: 999px;
+}
+
+.sel .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #111 !important;
+}
+
+.sel .sub {
+  opacity: 0.5;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+}
