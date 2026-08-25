@@ -1,0 +1,157 @@
+/* 外部フォントは取りに行かない（この環境からは 403 で落ちる。Day 056 で確認済み）。
+   再現元は Outfit 一書体だが、ここは同じ骨格の grotesque を系統で当てる。 */
+:root {
+  --sky: #30c8c8;
+  --ink: #ffffff;
+  --red: #ff0000;
+  --sans: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, 'Liberation Sans', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--sky);
+}
+
+.page {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.page canvas {
+  display: block;
+}
+
+.ui {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── 見出し（左上・2行）─────────────────────────────────────────── */
+.head {
+  position: absolute;
+  left: 52px;
+  top: 46px;
+  max-width: 46%;
+}
+
+.kicker {
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.82;
+  margin-bottom: 26px;
+}
+
+.head h1 {
+  font-size: 134px;
+  line-height: 0.9;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+}
+
+.lede {
+  margin-top: 28px;
+  max-width: 33ch;
+  font-size: 15px;
+  line-height: 1.72;
+  opacity: 0.9;
+}
+
+/* ── 右上の台帳 ───────────────────────────────────────────────── */
+.tr {
+  position: absolute;
+  right: 52px;
+  top: 46px;
+  text-align: right;
+}
+
+.tr dl {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 6px 22px;
+  align-items: baseline;
+}
+
+.tr dt {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.78;
+}
+
+.tr dd {
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── 下端 ────────────────────────────────────────────────────── */
+.bl,
+.br {
+  position: absolute;
+  bottom: 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.bl {
+  left: 52px;
+}
+
+.br {
+  right: 52px;
+  text-align: right;
+}
+
+.lbl {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+
+.lbl + .val {
+  margin-bottom: 14px;
+}
+
+.val {
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  font-variant-numeric: tabular-nums;
+  white-space: pre;
+}
+
+.val.big {
+  font-size: 40px;
+}
+
+@media (max-width: 1100px) {
+  .head h1 {
+    font-size: 74px;
+  }
+  .head {
+    max-width: 70%;
+  }
+  .br {
+    display: none;
+  }
+}
