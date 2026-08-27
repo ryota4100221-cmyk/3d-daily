@@ -1,0 +1,205 @@
+:root {
+  --ink: #eef2f7;
+  --dim: #7e8ea3;
+  --cold: #2f6bff;
+  --warm: #de2525;
+  --bg: #0d1219;
+  --sans: "Liberation Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --mono: "DejaVu Sans Mono", "Liberation Mono", ui-monospace, Menlo, monospace;
+  --ja: "IPAGothic", "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+canvas {
+  display: block;
+}
+
+/* 地は真っ黒にしない。再現元の紺 #1E2939 を暗部に残して、左（青）側だけ
+   ほんの少し持ち上げる。交差が始まる前から画面の左右に温度差がある状態を作る。 */
+.veil {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 80% at 12% 62%, rgba(47, 107, 255, 0.13), transparent 62%),
+    radial-gradient(110% 85% at 92% 46%, rgba(222, 37, 37, 0.10), transparent 60%),
+    linear-gradient(180deg, rgba(13, 18, 25, 0.72) 0%, rgba(13, 18, 25, 0) 26%),
+    linear-gradient(0deg, rgba(13, 18, 25, 0.80) 0%, rgba(13, 18, 25, 0) 24%);
+}
+
+.head {
+  position: absolute;
+  left: 3.6vw;
+  top: 5.4vh;
+  pointer-events: none;
+}
+
+.idx {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  color: var(--dim);
+  margin-bottom: 14px;
+}
+
+.head h1 {
+  font-size: clamp(38px, 5.4vw, 84px);
+  line-height: 0.88;
+  letter-spacing: -0.045em;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.lede {
+  margin-top: 20px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  line-height: 1.85;
+  letter-spacing: 0.045em;
+  color: var(--dim);
+}
+
+.src {
+  position: absolute;
+  right: 3.6vw;
+  top: 5.4vh;
+  text-align: right;
+  pointer-events: none;
+}
+
+.src .lbl {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  color: var(--dim);
+  margin-bottom: 9px;
+}
+
+.src .dom {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+
+.src .ja {
+  font-family: var(--ja);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--dim);
+  margin-top: 7px;
+}
+
+.src .ja.dim {
+  color: #55677d;
+  margin-top: 3px;
+}
+
+/* 左右の名札。交差の両端が何であるかを、絵の外で一度だけ言う。 */
+.axis {
+  position: absolute;
+  bottom: 27vh;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  pointer-events: none;
+}
+
+.axis.left {
+  left: 3.6vw;
+}
+
+.axis.right {
+  right: 3.6vw;
+  align-items: flex-end;
+}
+
+.tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.26em;
+}
+
+.axis.left .tag {
+  color: #6f93e8;
+}
+
+.axis.right .tag {
+  color: #d97a76;
+}
+
+.tag.dim {
+  color: #566a82;
+  letter-spacing: 0.2em;
+}
+
+/* 分散した3カラム。再現元の「3カラム分散タイポ」と「等幅で流れる数字」を
+   1つに畳んだ場所。等幅は装飾ではなく、桁が動いても行が動かないための条件。 */
+.read {
+  position: absolute;
+  left: 3.6vw;
+  right: 3.6vw;
+  bottom: 4.6vh;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6vw;
+  pointer-events: none;
+  border-top: 1px solid rgba(126, 142, 163, 0.22);
+  padding-top: 14px;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  font-variant-numeric: tabular-nums;
+}
+
+.row b {
+  font-weight: 400;
+  color: var(--dim);
+  letter-spacing: 0.2em;
+  min-width: 92px;
+}
+
+.row i {
+  font-style: normal;
+  color: var(--ink);
+}
+
+.row em {
+  font-style: normal;
+  color: #6f93e8;
+}
