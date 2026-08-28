@@ -1,0 +1,121 @@
+:root {
+  --ink: #1d2b3a;
+  --dim: #8a9bad;
+  --accent: #009038;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  background: #ffffff;
+}
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+canvas {
+  display: block;
+}
+
+.ui {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.tl {
+  top: 30px;
+  left: 34px;
+}
+.tr {
+  top: 30px;
+  right: 34px;
+  align-items: flex-end;
+  text-align: right;
+}
+.bl {
+  bottom: 32px;
+  left: 34px;
+  max-width: 372px;
+}
+.br {
+  bottom: 32px;
+  right: 34px;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.mark {
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  color: var(--ink);
+  text-transform: uppercase;
+}
+
+.dim {
+  font-size: 9.5px;
+  letter-spacing: 0.26em;
+  color: var(--dim);
+  text-transform: uppercase;
+}
+
+.bl h1 {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 9px;
+}
+
+.bl p {
+  font-size: 11.5px;
+  line-height: 1.85;
+  letter-spacing: 0.015em;
+  color: #6e8093;
+}
+
+.bl em {
+  font-style: normal;
+  color: var(--ink);
+  letter-spacing: 0.05em;
+}
+
+.br .row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.num {
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  min-width: 52px;
+  text-align: right;
+}
+
+.hint {
+  margin-top: 9px;
+  color: #b3c1cd;
+}
