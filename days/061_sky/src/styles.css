@@ -1,0 +1,134 @@
+:root {
+  --ink: #f0e7e1;
+  --dim: rgba(240, 231, 225, 0.44);
+  --rule: rgba(240, 231, 225, 0.14);
+  --bg: #070202;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.stage {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+.stage canvas { display: block; }
+
+/* 3.2 画面ぶんの巻き取り。中身は無い——スクロールは読むためではなく、
+   空を回すためだけにある */
+.scroller { height: 320vh; pointer-events: none; }
+
+/* 地の明度は毎フレーム変わる（金属だから）。文字の可読性を金属の機嫌に預けないための
+   スクリム。上下だけ、地の色そのもので落とす */
+.scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom, rgba(7, 2, 2, 0.86) 0%, rgba(7, 2, 2, 0) 13%),
+    linear-gradient(to top, rgba(7, 2, 2, 0.92) 0%, rgba(7, 2, 2, 0.66) 14%, rgba(7, 2, 2, 0) 32%);
+}
+
+.ui {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  padding: 40px 46px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+/* ── 上の1行 ───────────────────────────────────────────── */
+header {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--rule);
+}
+
+header .no {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: var(--dim);
+}
+
+header .ttl {
+  font-size: 11px;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+}
+
+header .src {
+  margin-left: auto;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  color: var(--dim);
+}
+
+/* ── 見出し ───────────────────────────────────────────── */
+h1 {
+  align-self: end;
+  margin: 0 0 34px;
+  font-weight: 700;
+  font-size: clamp(26px, 3.9vw, 62px);
+  line-height: 0.98;
+  letter-spacing: -0.014em;
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+  transform-origin: left bottom;
+  /* 手元に condensed が無い環境でも同じ幅で焼けるよう、幅は変形で作る */
+  transform: scaleX(0.84);
+}
+
+h1 span:nth-child(2) {
+  color: var(--dim);
+}
+
+/* ── 下の帯 ───────────────────────────────────────────── */
+.spec {
+  margin: 0;
+  display: flex;
+  gap: 34px;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+}
+
+.spec div { display: flex; flex-direction: column; gap: 5px; }
+.spec dt { color: var(--dim); }
+.spec dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+}
+
+.hint {
+  position: absolute;
+  right: 46px;
+  bottom: 40px;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  color: var(--dim);
+}
+
+@media (max-width: 720px) {
+  .ui { padding: 24px 22px; }
+  h1 { max-width: 100%; margin-bottom: 26px; }
+  .spec { gap: 18px; flex-wrap: wrap; }
+  .hint { display: none; }
+}
