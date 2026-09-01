@@ -1,0 +1,153 @@
+:root {
+  --ink: #0f1f10;
+  --paper: #e4eccf;
+  --lime: #c6f19d;
+  --mute: #6f8567;
+  --line: rgba(198, 241, 157, 0.16);
+  --sans: "Helvetica Neue", Helvetica, Arial, "Inter", system-ui, sans-serif;
+  --mono: ui-monospace, "SFMono-Regular", Menlo, "DejaVu Sans Mono", monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  background: var(--ink);
+  overflow: hidden;
+}
+
+.root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+canvas {
+  display: block;
+}
+
+.ui {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  font-family: var(--mono);
+  color: var(--paper);
+}
+
+/* ── 上段 ───────────────────────────────────────────── */
+.tl {
+  position: absolute;
+  left: 46px;
+  top: 40px;
+  display: flex;
+  align-items: baseline;
+  gap: 22px;
+}
+.tl .no {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: var(--mute);
+}
+.tl .ttl {
+  font-size: 11px;
+  letter-spacing: 0.34em;
+  color: var(--lime);
+}
+
+.tr {
+  position: absolute;
+  right: 46px;
+  top: 36px;
+  text-align: right;
+}
+.tr .after {
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  color: var(--mute);
+}
+.tr .host {
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  color: var(--paper);
+  margin-top: 5px;
+}
+.tr .sub {
+  font-size: 10.5px;
+  letter-spacing: 0.045em;
+  color: var(--mute);
+  margin-top: 3px;
+}
+
+/* ── 見出し ─────────────────────────────────────────── */
+.lead {
+  position: absolute;
+  left: 46px;
+  bottom: 132px;
+  max-width: 900px;
+}
+.lead h1 {
+  font-family: var(--sans);
+  font-size: 41px;
+  line-height: 1.14;
+  letter-spacing: -0.012em;
+  font-weight: 700;
+  color: var(--paper);
+}
+.lead h1 em {
+  font-style: normal;
+  color: var(--mute);
+}
+.lead p {
+  margin-top: 18px;
+  max-width: 560px;
+  font-size: 11.5px;
+  line-height: 1.85;
+  letter-spacing: 0.02em;
+  color: var(--mute);
+}
+
+/* ── 数値バー ───────────────────────────────────────── */
+.bar {
+  position: absolute;
+  left: 46px;
+  right: 46px;
+  bottom: 40px;
+  display: flex;
+  gap: 46px;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+}
+.cell {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 92px;
+}
+.cell.wide {
+  min-width: 150px;
+}
+.cell.right {
+  margin-left: auto;
+  text-align: right;
+}
+.cell .k {
+  font-size: 9.5px;
+  letter-spacing: 0.24em;
+  color: var(--mute);
+}
+.cell .v {
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  color: var(--paper);
+  font-variant-numeric: tabular-nums;
+}
+.cell .v.lime {
+  color: var(--lime);
+}
