@@ -1,0 +1,193 @@
+/* UNIPLEX は Marcellus（1ウェイトの細身セリフ）で見出しからロゴまで通し、
+   太字を一度も使わない。太さではなくサイズと余白だけで階層を作る型。
+   外部フォントはこの環境から取りに行けないので、同じ性格の実書体で受ける。 */
+
+:root {
+  --air: #eae4e0;
+  --bench: #e2dbd7;
+  --ink: #2b2926;
+  --slate: #63666a;
+  --lime: #cfdb00;
+  --serif: 'Marcellus', 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background: var(--air);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.stage canvas {
+  display: block;
+}
+
+/* オーバーレイは全部 pointer-events:none。板はポインタの x で動くので、
+   文字が当たり判定を持つと場所によって板が止まる */
+.ui {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+header {
+  position: absolute;
+  top: 44px;
+  left: 52px;
+  max-width: 30ch;
+}
+
+.rule {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-bottom: 16px;
+}
+
+.rule span + span::before {
+  content: '';
+  display: inline-block;
+  width: 26px;
+  height: 1px;
+  background: var(--slate);
+  opacity: 0.45;
+  vertical-align: 3px;
+  margin-right: 18px;
+}
+
+h1 {
+  font-size: 40px;
+  line-height: 1.08;
+  letter-spacing: -0.018em;
+  font-weight: 400;
+}
+
+.sub {
+  margin-top: 14px;
+  font-size: 13px;
+  line-height: 1.75;
+  letter-spacing: 0.02em;
+  color: var(--slate);
+}
+
+.credit {
+  position: absolute;
+  top: 46px;
+  right: 52px;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.credit .lab {
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+
+.credit .site {
+  font-size: 20px;
+  letter-spacing: 0.09em;
+}
+
+.credit .url {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--slate);
+}
+
+.meters {
+  position: absolute;
+  left: 52px;
+  bottom: 46px;
+  display: flex;
+  gap: 54px;
+}
+
+.m {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.m .k {
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+
+.m .v {
+  font-size: 26px;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.claim {
+  position: absolute;
+  right: 52px;
+  bottom: 46px;
+  text-align: right;
+}
+
+.claim p {
+  font-size: 15px;
+  line-height: 1.8;
+  letter-spacing: 0.015em;
+}
+
+.claim .hint {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 9.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--slate);
+  border-bottom: 1px solid var(--lime);
+  padding-bottom: 4px;
+}
+
+@media (max-width: 900px) {
+  header,
+  .credit,
+  .meters,
+  .claim {
+    left: 24px;
+    right: 24px;
+  }
+  h1 {
+    font-size: 32px;
+  }
+  .meters {
+    gap: 26px;
+  }
+  .claim {
+    display: none;
+  }
+}
