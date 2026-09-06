@@ -1,0 +1,126 @@
+/* Day 068 — 濃紫の地。組みの数値は PIXEL × PIXEL 2026 の実測から。
+   見出し字間 2% / 本文行間 185% / 本文 14px。書体は外部を読めないので
+   （この環境から Google Fonts は403）システムのグロテスクで代用する。 */
+
+:root {
+  --ground: #18103f;
+  --paper: #ffffff;
+  --pink: #ff2f9b;
+  --cyan: #00d0e0;
+  --dim: rgba(255, 255, 255, 0.42);
+  --rule: rgba(255, 255, 255, 0.14);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  background: var(--ground);
+}
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'Liberation Sans', sans-serif;
+  color: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+.wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+canvas {
+  display: block;
+}
+
+/* ── 見出し ─────────────────────────────────────────────── */
+.head {
+  position: absolute;
+  top: 4.4vh;
+  left: 3.6vw;
+  width: min(30ch, 34vw);
+  pointer-events: none;
+}
+
+.kicker {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 1.15rem;
+}
+
+.head h1 {
+  font-size: clamp(38px, 4.7vw, 70px);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: 0.02em; /* 実測 見出し字間 2% */
+}
+
+.lede {
+  margin-top: 1.35rem;
+  max-width: 30ch;
+  font-size: 13px;
+  line-height: 1.85; /* 実測 本文行間 185% */
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ── 実測の読み出し ─────────────────────────────────────── */
+/* 🔴 最初は画面の左下に置いていたが、場の手前左の角がそこまで伸びていて
+   罫と1行目がタイルの上に乗った（ビルドでは出ない・実描画でしか分からない）。
+   見出しと同じ左の1列に積んで、下半分は地のまま空けておく。 */
+.readout {
+  position: absolute;
+  left: 3.6vw;
+  top: 47vh;
+  pointer-events: none;
+  border-top: 1px solid var(--rule);
+  padding-top: 0.85rem;
+  width: min(37ch, 30vw);
+}
+
+.readout .row {
+  display: flex;
+  gap: 1.1rem;
+  font-size: 11px;
+  line-height: 1.85;
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+}
+
+.readout dt {
+  flex: 0 0 4.6rem;
+  color: var(--cyan);
+  letter-spacing: 0.08em;
+}
+
+.readout dd {
+  color: rgba(255, 255, 255, 0.58);
+}
+
+/* ── 右下 ───────────────────────────────────────────────── */
+.hint {
+  position: absolute;
+  right: 3.6vw;
+  bottom: 3.4vh;
+  text-align: right;
+  font-size: 11px;
+  line-height: 1.85;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+}
+
+.hint span {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--pink);
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+}
