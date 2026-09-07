@@ -1,0 +1,192 @@
+/* Day 069 — 地は honeyeater.org の深い青緑（実測アクセント #002828 16.6%）。
+   組みの数値も実測から：本文13px、版面幅863px、左余白58px、トンマナは
+   モノトーン＋エディトリアル、見出し・本文とも Helvetica Neue。
+   外部フォントはこの環境から403なので、同じグロテスクをシステムで代用する。 */
+
+:root {
+  --ground: #061a19;
+  --ink: #e9ece7;
+  --gold: #f8d080;
+  --dim: rgba(233, 236, 231, 0.44);
+  --faint: rgba(233, 236, 231, 0.22);
+  --rule: rgba(233, 236, 231, 0.16);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  background: var(--ground);
+}
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'Liberation Sans', sans-serif;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+.wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.stage,
+.vignette,
+.scroller {
+  position: absolute;
+  inset: 0;
+}
+
+canvas {
+  display: block;
+}
+
+/* 縁を締めるだけ。地の色そのものへ落とすので境目は出ない。 */
+.vignette {
+  pointer-events: none;
+  background: radial-gradient(120% 92% at 62% 46%, rgba(6, 26, 25, 0) 38%, rgba(4, 16, 15, 0.72) 100%);
+}
+
+.scroller {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.scroller::-webkit-scrollbar {
+  width: 0;
+}
+.spacer {
+  height: 620vh;
+}
+
+/* ── 版面 ─────────────────────────────────────────────────────────── */
+.masthead,
+.count,
+.readout,
+.hint {
+  position: absolute;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.masthead {
+  top: 46px;
+  left: 58px; /* 実測の左余白 */
+  max-width: 430px;
+}
+.masthead .rule {
+  width: 42px;
+  height: 1px;
+  background: var(--gold);
+  margin-bottom: 18px;
+}
+.masthead h1 {
+  font-size: 34px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.06;
+}
+.masthead .sub {
+  margin-top: 12px;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--dim);
+}
+.masthead .sub i {
+  font-style: italic;
+}
+.masthead .after {
+  margin-top: 26px;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+/* 再現元の「巨大な数字を表示級数で置いて危機の規模を一撃で見せる」。 */
+.count {
+  left: 58px;
+  bottom: 54px;
+}
+.count .huge {
+  font-size: 168px;
+  line-height: 0.82;
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+.count .caption {
+  margin-top: 20px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--dim);
+}
+
+.readout {
+  right: 58px;
+  bottom: 54px;
+  width: 268px;
+  border-top: 1px solid var(--rule);
+}
+.readout .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 11px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.readout .row .v {
+  font-size: 13px;
+  letter-spacing: 0;
+  color: var(--dim);
+  font-variant-numeric: tabular-nums;
+}
+.readout .row.hot .v {
+  color: var(--gold);
+}
+
+.hint {
+  right: 58px;
+  top: 48px;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--faint);
+  text-align: right;
+}
+.hint span {
+  display: block;
+  margin-top: 7px;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  font-size: 12px;
+}
+
+@media (max-width: 900px) {
+  .masthead,
+  .count {
+    left: 26px;
+  }
+  .readout,
+  .hint {
+    right: 26px;
+  }
+  .count .huge {
+    font-size: 104px;
+  }
+  .readout {
+    width: 210px;
+  }
+}
