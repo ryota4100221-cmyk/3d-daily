@@ -1,0 +1,215 @@
+/* Day 070 — 白地 #FFFFFF / 黒 #000000 / 罫 #CCCCCC の3値だけ。
+   再現元の実測: 見出し 72px・行間100%・W400・字間 -7.5% / 本文 14px・行間171%。 */
+:root {
+  --ink: #000000;
+  --rule: #cccccc;
+  --ground: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--ground);
+  color: var(--ink);
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', sans-serif;
+  font-size: 14px;
+  line-height: 171%;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.stage {
+  position: absolute !important;
+  inset: 0;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+header {
+  position: absolute;
+  top: 58px;
+  left: 88px;
+  right: 88px;
+}
+
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 24px 0 0;
+  font-size: 72px;
+  line-height: 72px;
+  font-weight: 400;
+  letter-spacing: -0.075em;
+}
+
+.after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: right;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.tagline {
+  margin-top: 16px;
+  padding-top: 13px;
+  border-top: 1px solid var(--rule);
+  font-size: 13px;
+  line-height: 1.6;
+  max-width: 720px;
+}
+
+.mono {
+  font-family: 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: 0.92em;
+  letter-spacing: 0.01em;
+}
+
+/* ── ラック上の目盛り。位置は3Dの投影から取っているので必ず板と揃う ── */
+.marks {
+  position: absolute;
+  inset: 0;
+}
+
+.rowlabel {
+  position: absolute;
+  text-align: right;
+  padding-right: 0;
+  padding-left: 88px;
+}
+
+.rl-k {
+  font-size: 15px;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+.rl-v {
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.rl-n {
+  margin-top: 6px;
+  font-size: 10px;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  color: #8a8a8a;
+}
+
+.cellval {
+  position: absolute;
+  text-align: center;
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: #8a8a8a;
+}
+
+.collabel {
+  position: absolute;
+  text-align: center;
+}
+
+.cl-k {
+  font-size: 12px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.cl-v {
+  font-size: 10px;
+  line-height: 1.4;
+  color: #8a8a8a;
+}
+
+footer {
+  position: absolute;
+  left: 88px;
+  right: 88px;
+  bottom: 58px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+  border-top: 1px solid var(--rule);
+  padding-top: 14px;
+}
+
+footer p {
+  margin: 0;
+  font-size: 11.5px;
+  line-height: 1.72;
+  max-width: 380px;
+}
+
+.spec {
+  color: #8a8a8a;
+  font-size: 10.5px;
+  line-height: 1.75;
+}
+
+.control {
+  position: absolute;
+  right: 88px;
+  top: 126px;
+  width: 300px;
+  text-align: right;
+  pointer-events: auto;
+}
+
+.control label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.control input[type='range'] {
+  width: 100%;
+  height: 1px;
+  appearance: none;
+  background: var(--rule);
+  outline: none;
+}
+
+.control input[type='range']::-webkit-slider-thumb {
+  appearance: none;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--ink);
+  cursor: pointer;
+}
+
+.readout {
+  margin-top: 10px;
+  font-size: 10px;
+  color: #8a8a8a;
+  line-height: 1.5;
+}
