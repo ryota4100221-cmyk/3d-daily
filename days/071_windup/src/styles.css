@@ -1,0 +1,210 @@
+/* Day 071 — layout borrowed from the measured reference, not invented.
+   sstr.tech runs a 568 px column against a 783 px left margin on a 1440 frame:
+   the text sits right of centre and the picture gets the whole left half.
+   Body 14 px / 143 %, heading tracking −5 %. */
+
+:root {
+  --bg: #16181c;
+  --ink: #edebe8;
+  --mute: #7c828c;
+  --faint: #4a515c;
+  --hot: #fe5b2a;
+  --rule: #2a2f38;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+.root {
+  position: fixed;
+  inset: 0;
+  /* #1E222A and #262A33 are two of the five colours measured on the reference
+     site; the ground is a slow fall between them and the charcoal. */
+  background: radial-gradient(128% 86% at 20% 6%, #232833 0%, #1a1d24 46%, #101216 100%);
+}
+
+canvas {
+  display: block;
+}
+
+/* ── projected marks over the drawing ───────────────────────────────────── */
+.marks {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.marks span {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--faint);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.marks span.dial {
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  color: var(--mute);
+}
+.marks span.dial.hot {
+  color: var(--hot);
+}
+
+/* ── the column ─────────────────────────────────────────────────────────── */
+.col {
+  position: absolute;
+  left: 54.4%;
+  width: 36%;
+  top: 7.4%;
+  pointer-events: none;
+}
+
+.eyebrow {
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  color: var(--mute);
+  margin-bottom: 22px;
+}
+
+h1 {
+  margin: 0 0 26px;
+  font-size: 58px;
+  line-height: 0.98;
+  font-weight: 500;
+  letter-spacing: -0.05em;
+}
+
+.lede {
+  margin: 0 0 14px;
+  font-size: 14px;
+  line-height: 143%;
+  color: #b9bcc2;
+  max-width: 30em;
+}
+
+/* ── numbers ────────────────────────────────────────────────────────────── */
+.table {
+  margin: 26px 0 0;
+  border-top: 1px solid var(--rule);
+}
+.row {
+  display: grid;
+  grid-template-columns: 1fr auto 8.5em;
+  align-items: baseline;
+  gap: 12px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.row .k {
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.row .v {
+  font-family: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, monospace;
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+.row .v b {
+  font-weight: 400;
+}
+.row.hot .v {
+  color: var(--hot);
+  font-size: 17px;
+}
+.row .u {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--faint);
+  text-align: right;
+}
+
+.bar {
+  height: 2px;
+  background: var(--rule);
+  margin-top: 12px;
+}
+.bar i {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: var(--hot);
+}
+
+/* ── strip chart ────────────────────────────────────────────────────────── */
+.chart {
+  margin-top: 26px;
+}
+.chead {
+  display: flex;
+  justify-content: space-between;
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  color: var(--faint);
+  margin-bottom: 7px;
+}
+.chart svg {
+  display: block;
+  width: 100%;
+  height: 88px;
+  overflow: visible;
+}
+.chart line {
+  stroke: var(--faint);
+  stroke-width: 0.5;
+  stroke-dasharray: 1.6 1.6;
+  vector-effect: non-scaling-stroke;
+}
+.chart polyline {
+  fill: none;
+  stroke: var(--hot);
+  stroke-width: 1.4;
+  vector-effect: non-scaling-stroke;
+}
+
+/* ── foot ───────────────────────────────────────────────────────────────── */
+.foot {
+  margin-top: 28px;
+  font-size: 11px;
+  color: var(--mute);
+}
+.key {
+  color: var(--ink);
+  font-family: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.08em;
+}
+.foot em {
+  font-style: normal;
+  letter-spacing: 0.16em;
+  font-size: 10px;
+  color: var(--faint);
+}
+.foot em.on {
+  color: var(--hot);
+}
+.fine {
+  margin-top: 14px;
+  font-size: 10.5px;
+  line-height: 160%;
+  color: #565d68;
+  max-width: 32em;
+}
