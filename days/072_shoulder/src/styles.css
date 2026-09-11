@@ -1,0 +1,242 @@
+/* Day 072 — 版面は実測した中田工芸（NAKATA HANGER）から取っている。
+   白地 #FFFFFF、設計の色ゼロ（茶は写真＝木のハンガーの中にしか無い）、
+   中央揃えの1行を1文字ずつ空けて置き、その下をイタリックの欧文が受ける。
+   本文 13px / 行間 185% / 字間 +5.4%、左余白 207・版面幅 1092（1440 フレーム）。
+   1600 に合わせて余白 230px 相当に置き直した。 */
+
+:root {
+  --bg: #f7f6f4;
+  --paper: #ffffff;
+  --ink: #191715;
+  --mute: #8a857e;
+  --faint: #b5afa5;
+  --rule: #ded9d1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+.root {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(120% 80% at 50% 12%, #ffffff 0%, #faf9f7 46%, #f1efeb 100%);
+}
+
+canvas {
+  display: block;
+}
+
+.marks {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.dim {
+  color: var(--faint);
+}
+
+/* ── 隅 ─────────────────────────────────────────────────────────────── */
+.tl,
+.tr {
+  position: absolute;
+  top: 3.4%;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mute);
+  line-height: 1.75;
+}
+.tl {
+  left: 3.6%;
+}
+.tr {
+  right: 3.6%;
+  text-align: right;
+  text-transform: none;
+  letter-spacing: 0.07em;
+}
+
+/* ── 見出し ─────────────────────────────────────────────────────────── */
+header {
+  position: absolute;
+  top: 8.6%;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+  font-family: 'Yu Mincho', 'Hiragino Mincho ProN', 'Noto Serif JP', serif;
+  font-weight: 400;
+  font-size: 44px;
+  line-height: 1;
+  color: var(--ink);
+}
+h1 span {
+  display: inline-block;
+  padding: 0 0.28em;
+}
+
+.sub {
+  margin: 14px 0 0;
+  font-family: 'EB Garamond', 'Liberation Serif', Georgia, serif;
+  font-style: italic;
+  font-size: 19px;
+  letter-spacing: 0.04em;
+  color: var(--mute);
+}
+
+.claim {
+  margin: 16px 0 0;
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+/* ── 左右の余白に流す本文 ───────────────────────────────────────────── */
+.gutter {
+  position: absolute;
+  top: 40%;
+  width: 16.6%;
+  font-size: 11.5px;
+  line-height: 1.85;
+  letter-spacing: 0.054em;
+  color: var(--ink);
+}
+.gutter.left {
+  left: 3.6%;
+}
+.gutter.right {
+  right: 3.6%;
+  text-align: right;
+}
+.gutter p {
+  margin: 0 0 14px;
+}
+.gutter p.dim {
+  color: var(--mute);
+}
+
+.kv {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  align-items: baseline;
+  font-size: 10.5px;
+  line-height: 2.1;
+  letter-spacing: 0.09em;
+}
+.kv span {
+  color: var(--faint);
+  text-transform: uppercase;
+  font-size: 9.5px;
+}
+.kv b {
+  font-weight: 400;
+  font-family: 'SFMono-Regular', 'DejaVu Sans Mono', Menlo, monospace;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.kv.big b {
+  font-size: 15px;
+}
+.gutter .rule {
+  height: 1px;
+  background: var(--rule);
+  margin: 14px 0 12px;
+}
+
+/* ── ハンガーの下に置く実測値 ───────────────────────────────────────── */
+.panel {
+  position: absolute;
+  top: 79.5%;
+  width: 25%;
+  transform: translateX(-50%);
+}
+.panel.l {
+  left: 33.2%;
+}
+.panel.r {
+  left: 66.8%;
+}
+
+.panel-name {
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink);
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--rule);
+}
+.panel-jp {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--faint);
+  margin: 7px 0 8px;
+}
+.panel dl {
+  margin: 0;
+}
+.panel dl > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  line-height: 1.72;
+}
+.panel dt {
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.panel dd {
+  margin: 0;
+  font-family: 'SFMono-Regular', 'DejaVu Sans Mono', Menlo, monospace;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  color: var(--mute);
+}
+.panel .hot dt {
+  color: var(--ink);
+}
+.panel .hot dd {
+  color: var(--ink);
+  font-size: 14px;
+}
+
+/* ── 地の1行 ─────────────────────────────────────────────────────────── */
+footer {
+  position: absolute;
+  left: 3.6%;
+  right: 3.6%;
+  bottom: 2.4%;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  padding-top: 10px;
+  border-top: 1px solid var(--rule);
+  font-size: 9.5px;
+  letter-spacing: 0.11em;
+  color: var(--mute);
+}
