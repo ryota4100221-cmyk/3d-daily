@@ -1,0 +1,121 @@
+:root {
+  --ink: #14283a;
+  --ink-soft: rgba(20, 40, 58, 0.58);
+  --paper: #f2f0ea;
+  --sans: "Helvetica Neue", Helvetica, "Liberation Sans", Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", "DejaVu Sans Mono", "Liberation Mono", Menlo, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  margin: 0;
+  height: 100%;
+  background: #85afd8;
+  overflow: hidden;
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+canvas { display: block; }
+
+.stage > :not(canvas) {
+  position: absolute;
+  color: var(--ink);
+  pointer-events: none;
+}
+
+/* ── 天（版面上端 258px は 3D が空けてある）────────────────────────── */
+.hd { top: 46px; left: 58px; }
+
+.eyebrow {
+  margin: 0 0 14px;
+  font: 400 10.5px/1 var(--mono);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.hd h1 {
+  margin: 0;
+  font: 300 43px/1.08 var(--sans);
+  letter-spacing: -0.018em;
+}
+
+.sub {
+  margin: 16px 0 0;
+  font: 400 12.5px/1 var(--sans);
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+}
+.sub em { font-style: italic; }
+
+.tr {
+  top: 50px;
+  right: 58px;
+  text-align: right;
+}
+.tr p {
+  margin: 0 0 7px;
+  font: 400 10.5px/1 var(--mono);
+  letter-spacing: 0.19em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* ── 地（版面下端 807px 以下が空いている）──────────────────────────── */
+.data { left: 58px; bottom: 46px; }
+
+.lead {
+  margin: 0 0 12px;
+  font: 400 11px/1 var(--mono);
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.lead b { font-weight: 400; color: var(--ink); }
+
+.data table { border-collapse: collapse; }
+.data td {
+  font: 400 12px/1.5 var(--mono);
+  letter-spacing: 0.02em;
+  padding: 0 16px 0 0;
+  white-space: pre;
+}
+.data .k { color: var(--ink-soft); letter-spacing: 0.12em; }
+.data .ar { color: var(--ink-soft); padding-right: 12px; }
+.data .s b { font-weight: 400; }
+
+.note {
+  right: 58px;
+  bottom: 46px;
+  width: 430px;
+  text-align: right;
+}
+.note p {
+  margin: 0;
+  font: 400 13px/1.62 var(--sans);
+  letter-spacing: 0.005em;
+  color: var(--ink-soft);
+}
+.note em { font-style: italic; color: var(--ink); }
+
+.note .eq {
+  margin-top: 14px;
+  font: 400 12px/1 var(--mono);
+  letter-spacing: 0.24em;
+  color: var(--ink);
+}
+
+/* 狭い画面では読み物の側を畳む（版面は 16:10 の1枚として設計してある） */
+@media (max-width: 900px) {
+  .hd { left: 26px; top: 26px; }
+  .hd h1 { font-size: 30px; }
+  .tr { display: none; }
+  .data { left: 26px; bottom: 26px; }
+  .note { display: none; }
+}
