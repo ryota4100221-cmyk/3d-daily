@@ -1,0 +1,193 @@
+/* 地は #000000 一色。実測で地の92%が黒だったサイトの、その92%だけを借りる。 */
+:root {
+  --ink: #ffffff;
+  --mono: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas, monospace;
+  --sans: "Helvetica Neue", Helvetica, Inter, "Segoe UI", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #000;
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+canvas {
+  display: block;
+}
+
+/* 見出しも計器も、字の帯（画面の縦 34%〜66%）には決して入れない。
+   DOM と 3D の衝突はビルドでは出ない（Day 027）。 */
+.ui {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.tl {
+  position: absolute;
+  top: 44px;
+  left: 48px;
+}
+
+.title {
+  font-size: 12px;
+  letter-spacing: 0.30em;
+  text-transform: uppercase;
+  opacity: 0.92;
+}
+
+.sub {
+  margin-top: 9px;
+  font-size: 11px;
+  letter-spacing: 0.07em;
+  opacity: 0.40;
+}
+
+.tr {
+  position: absolute;
+  top: 44px;
+  right: 48px;
+  text-align: right;
+  font-family: var(--mono);
+}
+
+.tr .k {
+  font-size: 10px;
+  letter-spacing: 0.26em;
+  opacity: 0.38;
+}
+
+.tr .v {
+  margin-top: 8px;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  opacity: 0.88;
+  font-variant-numeric: tabular-nums;
+}
+
+.instrument {
+  position: absolute;
+  left: 48px;
+  bottom: 46px;
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.i-head,
+.i-row {
+  display: grid;
+  grid-template-columns: 52px 76px 82px 78px 104px;
+  align-items: baseline;
+  column-gap: 16px;
+}
+
+.i-head {
+  font-size: 9px;
+  letter-spacing: 0.20em;
+  opacity: 0.32;
+  padding-bottom: 9px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+  margin-bottom: 9px;
+}
+
+.i-row {
+  font-size: 12px;
+  line-height: 1.85;
+  letter-spacing: 0.03em;
+  opacity: 0.85;
+  transition: opacity 0.18s linear;
+}
+
+.i-ch {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+}
+
+.i-bar {
+  display: block;
+  height: 2px;
+  width: 104px;
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-4px);
+}
+
+.i-fill {
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+.i-foot {
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.13);
+  font-size: 9px;
+  letter-spacing: 0.20em;
+  opacity: 0.34;
+}
+
+.br {
+  position: absolute;
+  right: 48px;
+  bottom: 46px;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.30;
+  text-align: right;
+}
+
+@media (max-width: 720px) {
+  .tl,
+  .tr {
+    top: 26px;
+  }
+  .tl,
+  .instrument {
+    left: 24px;
+  }
+  .tr,
+  .br {
+    right: 24px;
+  }
+  .instrument,
+  .br {
+    bottom: 26px;
+  }
+  .i-head,
+  .i-row {
+    grid-template-columns: 30px 54px 0 64px 56px;
+    column-gap: 10px;
+  }
+  .i-head span:nth-child(3),
+  .i-row span:nth-child(3) {
+    display: none;
+  }
+  .i-bar {
+    width: 56px;
+  }
+  .br {
+    max-width: 40vw;
+  }
+}
