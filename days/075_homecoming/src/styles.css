@@ -1,0 +1,154 @@
+/* Pelata Pieces の実測：地 #FFFFFF、文字 #646450、本文 18px / 行間 133%、
+   左余白 430/1440 ≈ 30vw。橙 #FF7711 が主色で、差し色が水 #00A8E5。 */
+:root {
+  --paper: #ffffff;
+  --ink: #646450;
+  --deep: #2a2a24;
+  --orange: #ff7711;
+  --cyan: #00a8e5;
+  --mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root { height: 100%; margin: 0; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+.page { position: relative; width: 100%; height: 100%; }
+
+.rail-left {
+  position: absolute;
+  left: 3.0vw;
+  top: 0;
+  width: 29vw;
+  min-width: 300px;
+  height: 100%;
+  padding: 5.2vh 0 3.4vh;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+}
+
+h1 {
+  margin: 0 0 2.6vh;
+  font-family: var(--sans);
+  font-weight: 800;
+  font-size: clamp(32px, 4.2vw, 72px);
+  line-height: 1;               /* Pelata の見出しは行間 100% */
+  letter-spacing: -0.028em;
+  color: var(--deep);
+}
+
+.lede {
+  margin: 0 0 1.5em;
+  max-width: 30em;
+  font-family: var(--mono);
+  font-size: 14px;
+  line-height: 1.33;            /* Pelata の本文 133% */
+  letter-spacing: 0.005em;
+  color: var(--ink);
+}
+
+.lede.dim { color: rgba(100, 100, 80, 0.72); }
+
+.meter {
+  margin: auto 0 2.4vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(100, 100, 80, 0.2);
+  border: 1px solid rgba(100, 100, 80, 0.2);
+  max-width: 30em;
+}
+
+.meter > div {
+  background: var(--paper);
+  padding: 10px 12px 12px;
+}
+
+dt {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(100, 100, 80, 0.62);
+}
+
+dd {
+  margin: 4px 0 0;
+  font-family: var(--mono);
+  font-size: 26px;
+  line-height: 1;
+  color: var(--deep);
+  font-variant-numeric: tabular-nums;
+}
+
+dd.split { color: var(--orange); }
+dd.split i { font-style: normal; color: rgba(100, 100, 80, 0.45); margin: 0 4px; }
+
+.foot {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.5;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: rgba(100, 100, 80, 0.62);
+}
+
+.foot b { color: var(--ink); font-weight: 400; }
+.foot span { display: block; color: var(--orange); }
+
+@media (max-width: 900px) {
+  .rail-left { width: 92vw; background: rgba(255, 255, 255, 0.86); }
+  .lede.dim { display: none; }
+}
+
+.legend {
+  margin: 3vh 0 auto;
+  max-width: 30em;
+}
+
+.legend ul {
+  list-style: none;
+  margin: 10px 0 12px;
+  padding: 0;
+  display: flex;
+  gap: 18px;
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink);
+}
+
+.legend i {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  display: block;
+}
+
+.lk {
+  display: block;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(100, 100, 80, 0.62);
+  line-height: 1.6;
+}
+
+.lk.dim { text-transform: none; letter-spacing: 0.02em; font-size: 11px; }
