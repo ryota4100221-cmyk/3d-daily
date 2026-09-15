@@ -1,0 +1,167 @@
+/* Son Daven の実測値をそのまま組版の寸法に使う。
+   左余白 256/1440 = 17.8vw ／ 版面幅 1047/1440 = 72.7vw ／ 本文 16px ／
+   本文行間 150% ／ 見出し字間 -6.4% ／ 情報密度=疎 ／ 左揃え・2カラム。
+   色は #A89474 の1色だけ（設計の色 0.01% のサイトなので、色は光の側にしか無い）。 */
+
+:root {
+  --ink: #2a241c;
+  --ink-soft: #5c5346;
+  --sand: #a89474;
+  /* 見出しは夕方の空（暗い側）の上に乗るので、地の色を反転して持つ。
+     Son Daven 自身が「逆光のシルエットに砂色の文字」なので、そこに倣う。 */
+  --paper: #efe6d6;
+  --gutter: 17.8vw;
+  --measure: 72.7vw;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: #b9ab93;
+  color: var(--ink);
+  font-family: 'Helvetica Neue', Inter, 'Segoe UI', system-ui, -apple-system,
+    sans-serif;
+  font-size: 16px;
+  line-height: 1.5; /* 実測 150% */
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+.page canvas {
+  display: block;
+}
+
+/* ── 見出し ────────────────────────────────────────────────────────
+   空の帯の上に置く。3Dの被写体（ルーバーの壁）とは重ねない。 */
+.masthead {
+  position: absolute;
+  top: 4.2vh;
+  left: var(--gutter);
+  /* 🔴 min(46ch, …) と書いていたが ch は .masthead 自身の 16px 基準なので
+     368px にしかならず、h1 が3行に折れて壁の上に乗った（Day 027 と同じ衝突）。
+     見出しの寸法は見出しの単位で決める。 */
+  width: min(620px, 64vw);
+  pointer-events: none;
+}
+
+.eyebrow {
+  margin: 0 0 1.15rem;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sand);
+}
+
+.masthead h1 {
+  margin: 0;
+  font-size: clamp(28px, 3.0vw, 46px);
+  line-height: 1.06;
+  font-weight: 400;
+  letter-spacing: -0.064em; /* 実測 -6.4% */
+  color: var(--paper);
+}
+
+.standfirst {
+  margin: 1.15rem 0 0;
+  max-width: 520px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(239, 230, 214, 0.64);
+}
+
+/* ── 計器 ──────────────────────────────────────────────────────────
+   空の側（右上）に置く。床は縞そのものが証拠なので、1本も隠さない。 */
+.instrument {
+  position: absolute;
+  right: 6vw;
+  top: 3.0vh;
+  padding: 1.0rem 1.4rem 0.95rem;
+  background: rgba(238, 231, 217, 0.80);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  border-left: 1px solid var(--sand);
+  pointer-events: none;
+}
+
+.sun {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 0.8rem;
+}
+
+.sun .lbl {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.sun .val {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 17px;
+  letter-spacing: -0.02em;
+}
+
+.instrument table {
+  border-collapse: collapse;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.instrument th {
+  padding: 0 0.9rem 0.4rem 0;
+  font-family: 'Helvetica Neue', Inter, system-ui, sans-serif;
+  font-size: 9.5px;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-align: right;
+  color: var(--ink-soft);
+  border-bottom: 1px solid rgba(168, 148, 116, 0.55);
+}
+
+.instrument th:first-child,
+.instrument td:first-child {
+  text-align: left;
+  padding-right: 1.3rem;
+}
+
+.instrument td {
+  padding: 0.26rem 0.9rem 0.26rem 0;
+  text-align: right;
+  color: var(--ink);
+}
+
+/* 3つ並んで同じであることが、この列のすべて */
+.instrument td.key {
+  color: #1d1810;
+  font-weight: 600;
+}
+
+.instrument tr.ctl td {
+  color: var(--ink-soft);
+}
+
+.instrument .foot {
+  margin: 0.8rem 0 0;
+  max-width: 470px;
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
