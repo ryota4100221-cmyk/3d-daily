@@ -1,0 +1,123 @@
+/* uki reads as three pastels and one near-black, set in a single sans at one
+   weight. Jost itself is not reachable from this machine, so the grotesque is
+   the system stack held at 400 and opened up with tracking — the setting is
+   borrowed, not the file. */
+:root {
+  --paper: #fffcec;
+  --ink: #14151f;
+  --grass: #e2f4be;
+  --sea: #cfeff8;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root { height: 100%; margin: 0; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Jost', 'Futura', 'Century Gothic', 'Avenir Next', system-ui, -apple-system,
+    'Helvetica Neue', Arial, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+.page { position: relative; height: 100%; width: 100%; }
+canvas { display: block; touch-action: none; cursor: ew-resize; }
+
+.hd { position: absolute; top: 46px; left: 56px; max-width: 30ch; pointer-events: none; }
+
+.mark {
+  font-size: 11px;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  opacity: 0.55;
+  margin-bottom: 26px;
+}
+
+h1 {
+  font-size: 40px;
+  line-height: 1.12;
+  letter-spacing: 0.012em;
+  font-weight: 400;
+  margin: 0 0 18px;
+}
+
+.sub {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.75;
+  letter-spacing: 0.04em;
+  max-width: 27ch;
+  opacity: 0.62;
+}
+
+.consts {
+  position: absolute;
+  left: 56px;
+  bottom: 96px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  pointer-events: none;
+}
+
+.consts div { display: flex; align-items: baseline; gap: 12px; font-size: 11px; letter-spacing: 0.12em; }
+.consts span { opacity: 0.5; min-width: 15ch; }
+.consts b { font-weight: 400; font-variant-numeric: tabular-nums; letter-spacing: 0.06em; }
+.consts i { font-style: normal; font-size: 8px; vertical-align: -2px; letter-spacing: 0; }
+.consts .crit span { opacity: 0.82; }
+.consts .crit b {
+  background: var(--grass);
+  padding: 2px 9px;
+  margin-left: -4px;
+}
+
+.live {
+  position: absolute;
+  right: 56px;
+  top: 46px;
+  width: 210px;
+  border-top: 1px solid rgba(20, 21, 31, 0.28);
+  padding-top: 14px;
+  pointer-events: none;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  padding: 6px 0;
+}
+
+.row span { opacity: 0.5; text-transform: uppercase; }
+.row b { font-weight: 400; font-variant-numeric: tabular-nums; letter-spacing: 0.05em; }
+
+.verdict { border-top: 1px solid rgba(20, 21, 31, 0.18); margin-top: 8px; padding-top: 12px; }
+.verdict b { font-size: 13px; letter-spacing: 0.3em; }
+
+.ft { position: absolute; left: 56px; right: 56px; bottom: 40px; pointer-events: none; }
+
+.scrub { height: 1px; background: rgba(20, 21, 31, 0.16); margin-bottom: 14px; }
+.scrub i { display: block; height: 1px; background: var(--ink); transform-origin: 0 0; transform: scaleX(0); }
+
+.ftrow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+@media (max-width: 900px) {
+  .hd { left: 24px; top: 28px; }
+  h1 { font-size: 27px; }
+  .consts { left: 24px; bottom: 84px; }
+  .live { right: 24px; width: 160px; }
+  .ft { left: 24px; right: 24px; }
+}
