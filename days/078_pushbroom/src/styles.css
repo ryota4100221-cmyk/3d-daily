@@ -1,0 +1,240 @@
+/* USAvionix は書体を2本しか持たない（Geist と Geist Mono）。専門性を書体の種類数では
+   なく等幅の使い方で出し、COORD / ALT / THERMAL のような実測値風の文字列を UI ではなく
+   画面の「地」として敷く。Geist はこの環境から取れないので、借りたのは組み方だけ——
+   全大文字・等幅・字間を開ける・階層は太さではなく不透明度で作る。
+   有彩色は3つしか使わない。--red / --yel / --cyan。ブランド色は1つも置かない。 */
+:root {
+  --bg: #0f0f10;
+  --fg: #f2f2f2;
+  --red: #ff6666;
+  --yel: #ffcb47;
+  --cyan: #7aebff;
+  --strip-left: 45.5%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: ui-monospace, 'SFMono-Regular', 'JetBrains Mono', 'Roboto Mono', Menlo, Consolas,
+    monospace;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+.page {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+canvas {
+  display: block;
+  touch-action: none;
+  cursor: ew-resize;
+}
+
+.hd,
+.consts,
+.tally,
+.ruler,
+.ft {
+  position: absolute;
+  pointer-events: none;
+}
+
+.hd {
+  top: 74px;
+  left: 64px;
+  max-width: 38ch;
+}
+
+.mark {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  opacity: 0.8;
+  margin-bottom: 30px;
+}
+
+h1 {
+  font-size: 38px;
+  line-height: 1.16;
+  letter-spacing: -0.015em;
+  font-weight: 400;
+  margin: 0 0 22px;
+}
+
+.sub {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.85;
+  letter-spacing: 0.02em;
+  max-width: 44ch;
+  opacity: 0.52;
+}
+
+.lbl {
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  opacity: 0.38;
+  margin-bottom: 12px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid rgba(242, 242, 242, 0.14);
+}
+
+.tally {
+  left: 64px;
+  top: 440px;
+  width: 470px;
+}
+
+.tally table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+
+.tally td {
+  padding: 5px 0;
+  opacity: 0.62;
+  white-space: nowrap;
+}
+
+.tally .num {
+  text-align: right;
+  padding-left: 14px;
+}
+
+.tally .arrow {
+  opacity: 0.25;
+  padding-left: 16px;
+}
+
+.tally .big {
+  opacity: 0.95;
+}
+
+.tally .k {
+  color: var(--cyan);
+  opacity: 0.78;
+  width: 62px;
+}
+
+.tally tr.inf .big,
+.tally tr.inf .k {
+  color: var(--yel);
+  opacity: 1;
+}
+
+.consts {
+  left: 64px;
+  bottom: 84px;
+  width: 300px;
+}
+
+.consts ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+
+.consts li {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  opacity: 0.55;
+}
+
+.consts li.live {
+  opacity: 0.95;
+}
+
+.consts li.live b {
+  color: var(--cyan);
+}
+
+.consts b {
+  font-weight: 400;
+}
+
+.hint {
+  margin-top: 20px;
+  font-size: 9px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  opacity: 0.34;
+}
+
+.ruler {
+  top: 0;
+  left: 0;
+  width: calc(var(--strip-left) - 16px);
+  height: 100%;
+}
+
+.ruler .tk {
+  position: absolute;
+  right: 0;
+  transform: translateY(-50%);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: var(--cyan);
+  opacity: 0.6;
+}
+
+.ft {
+  left: 64px;
+  bottom: 40px;
+  width: calc(var(--strip-left) - 80px);
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.3;
+}
+
+@media (max-width: 900px) {
+  .hd {
+    top: auto;
+    bottom: 240px;
+    left: 24px;
+    max-width: none;
+    right: 24px;
+  }
+  h1 {
+    font-size: 26px;
+  }
+  .sub {
+    display: none;
+  }
+  .tally {
+    left: 24px;
+    top: auto;
+    bottom: 96px;
+    width: auto;
+    right: 24px;
+  }
+  .consts,
+  .ruler,
+  .ft {
+    display: none;
+  }
+}
