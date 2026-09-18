@@ -1,0 +1,71 @@
+:root {
+  --ink: #2b2722;
+  --mute: #8b8271;
+  --azuki: #c95055;
+  --ground: #e5e0ca;
+}
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; }
+body {
+  background: var(--ground);
+  color: var(--ink);
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+.stage { position: fixed; inset: 0; }
+.overlay { position: fixed; inset: 0; pointer-events: none; }
+
+.tl { position: absolute; left: 4.4%; top: 3.6%; }
+.tr { position: absolute; right: 4.4%; top: 3.6%; text-align: right; }
+.bl { position: absolute; left: 4.4%; bottom: 3.4%; }
+.br { position: absolute; right: 4.4%; bottom: 3.4%; text-align: right; }
+
+.title {
+  font-size: 12px;
+  letter-spacing: 0.30em;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.sub {
+  margin-top: 7px;
+  font-size: 9.5px;
+  letter-spacing: 0.19em;
+  color: var(--mute);
+  text-transform: uppercase;
+}
+.mono {
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 10px;
+  letter-spacing: 0.10em;
+  color: var(--mute);
+}
+.mono b { font-weight: 500; color: var(--ink); }
+.mono .hit { color: var(--azuki); }
+
+.ticks { position: absolute; left: 0; right: 0; bottom: 9.6%; }
+.tick {
+  position: absolute;
+  transform: translateX(-50%);
+  text-align: center;
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+}
+.tick .t { font-size: 9px; letter-spacing: 0.08em; color: var(--mute); }
+.tick .n { margin-top: 5px; font-size: 12px; letter-spacing: 0.02em; color: var(--ink); }
+.tick.win .n { color: var(--azuki); }
+.rule {
+  position: absolute;
+  bottom: 15.4%;
+  height: 1px;
+  background: rgba(43, 39, 34, 0.16);
+}
+
+.caption {
+  position: absolute;
+  left: 4.4%;
+  top: 6px;
+  font-size: 9px;
+  letter-spacing: 0.19em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
