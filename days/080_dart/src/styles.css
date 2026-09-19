@@ -1,0 +1,147 @@
+:root {
+  /* キヤスクの実測：白 #FFFFFF と淡グレー #ECECEC／#F6F6F6 の地、
+     文字 #000000／#555555、差し色サーモン #FF8A76 が3箇所だけ。 */
+  --paper: #f0eeeb;
+  --paper-2: #e7e4e0;
+  --ink: #111111;
+  --ink-2: #555555;
+  --ink-3: #8d8a86;
+  --salmon: #ff8a76;
+  --sans: 'Liberation Sans', 'DejaVu Sans', 'IPAGothic', sans-serif;
+  --serif: 'Bitstream Charter', 'Liberation Serif', 'DejaVu Serif', Georgia, serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body, #root { width: 100%; height: 100%; overflow: hidden; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.stage { position: fixed; inset: 0; }
+
+/* 地はベタ1色ではなく、上から下へごくわずかに沈める。
+   monaka のトンマナで「白」が白飛びしないための保険。 */
+.stage::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(176deg, #f4f2f0 0%, var(--paper) 46%, var(--paper-2) 100%);
+  z-index: 0;
+}
+
+canvas { position: relative; z-index: 1; }
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.col {
+  position: absolute;
+  left: 64px;
+  top: 62px;
+  width: 400px;
+}
+
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  line-height: 2.0;
+}
+.eyebrow .rule {
+  display: block;
+  width: 34px;
+  height: 1px;
+  background: var(--ink);
+  margin-bottom: 18px;
+}
+
+/* 借りたのはこの組み方ひとつ：明朝を1文だけ、行間198%・字間を開けて置き、
+   残りは全部小さいゴシックに落とす。叫ばずに主張を置くための型。 */
+.claim {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 37px;
+  line-height: 1.98;
+  letter-spacing: 0.115em;
+  color: var(--ink);
+  margin: 40px 0 0;
+}
+.claim em { font-style: normal; color: var(--salmon); }
+
+.body {
+  margin-top: 46px;
+  font-size: 11.5px;
+  line-height: 2.05;
+  letter-spacing: 0.055em;
+  color: var(--ink-2);
+  max-width: 356px;
+}
+.body b { color: var(--ink); font-weight: 400; }
+
+.device {
+  margin-top: 30px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(17, 17, 17, 0.14);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink);
+  line-height: 2.1;
+}
+.device span { color: var(--ink-3); }
+
+/* 実測値。数字を出さないガードは静かにオフになる（RUN.md）。 */
+.meter {
+  position: absolute;
+  left: 64px;
+  bottom: 54px;
+  font-size: 10px;
+  letter-spacing: 0.085em;
+  color: var(--ink-2);
+  line-height: 2.25;
+  font-variant-numeric: tabular-nums;
+}
+.meter .k { display: inline-block; width: 186px; color: var(--ink-3); }
+.meter .v { color: var(--ink); }
+
+.legend {
+  position: absolute;
+  right: 64px;
+  bottom: 54px;
+  text-align: right;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  line-height: 2.2;
+}
+.legend .dot {
+  display: inline-block;
+  width: 16px;
+  height: 2px;
+  background: var(--salmon);
+  vertical-align: middle;
+  margin-right: 9px;
+}
+
+.corner {
+  position: absolute;
+  right: 64px;
+  top: 62px;
+  text-align: right;
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  line-height: 2.1;
+}
