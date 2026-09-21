@@ -1,0 +1,179 @@
+:root {
+  --ground: #606060;
+  --ink: #e2e2e2;
+  --sub: #9a9a9a;
+  --hair: rgba(226, 226, 226, 0.22);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--ground);
+}
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'Inter', sans-serif;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+canvas {
+  display: block;
+}
+
+.hud {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* ── masthead ─────────────────────────────────────────────────────────── */
+.mast {
+  position: absolute;
+  left: 38px;
+  top: 34px;
+  max-width: min(62vw, 880px);
+}
+
+.kick {
+  font-size: 10px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--sub);
+  margin-bottom: 14px;
+}
+
+.mast {
+  top: 32px;
+}
+
+.mast h1 {
+  font-size: clamp(22px, 2.4vw, 36px);
+  line-height: 1.06;
+  letter-spacing: -0.022em;
+  font-weight: 400;
+  color: #efefef;
+}
+
+.aside {
+  position: absolute;
+  right: 38px;
+  top: 36px;
+  width: min(30vw, 340px);
+}
+
+.lede {
+  margin-top: 0;
+  max-width: 46ch;
+  font-size: 12px;
+  line-height: 1.72;
+  color: var(--sub);
+}
+
+.lede + .lede {
+  margin-top: 13px;
+}
+
+.lede.dim {
+  color: #7d7d7d;
+}
+
+.lede em {
+  font-style: normal;
+  color: #d8d8d8;
+}
+
+/* ── row captions ─────────────────────────────────────────────────────── */
+.rowcap {
+  position: absolute;
+  transform: translate(-100%, -50%);
+  padding-right: 4px;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+.rowcap b {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #ededed;
+}
+
+.rowcap span {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--sub);
+}
+
+.rowcap .num {
+  font-variant-numeric: tabular-nums;
+  color: #c7c7c7;
+  border-top: 1px solid var(--hair);
+  padding-top: 5px;
+  margin-top: 1px;
+}
+
+/* ── per column ───────────────────────────────────────────────────────── */
+.lam {
+  position: absolute;
+  transform: translateY(-100%);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  color: #e6e6e6;
+  padding-bottom: 7px;
+  white-space: nowrap;
+}
+
+.rho {
+  position: absolute;
+  font-size: 9.5px;
+  letter-spacing: 0.05em;
+  font-variant-numeric: tabular-nums;
+  color: #8b8b8b;
+  white-space: nowrap;
+}
+
+.rho sub {
+  font-size: 7.5px;
+}
+
+/* ── footer ───────────────────────────────────────────────────────────── */
+.foot {
+  position: absolute;
+  left: 38px;
+  right: 38px;
+  bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+  border-top: 1px solid var(--hair);
+  padding-top: 12px;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  color: var(--sub);
+}
+
+.foot b {
+  font-weight: 500;
+  color: #d4d4d4;
+}
+
+.foot .mono {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
