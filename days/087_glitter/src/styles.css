@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, #root { width: 100%; height: 100%; overflow: hidden; background: #16203d; }
+body { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; color: #f6efe6; -webkit-font-smoothing: antialiased; }
+canvas { display: block; }
+
+.title { position: fixed; left: 5.5vw; top: 7vh; pointer-events: none; }
+.title h1 { font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif; font-weight: 300; line-height: 0.9; }
+.t1 { display: block; font-size: clamp(56px, 8.4vw, 150px); letter-spacing: -0.02em; }
+.t2 { display: block; font-style: italic; font-size: clamp(20px, 2.1vw, 36px); margin: 0.35em 0 0.2em 3.6em; opacity: 0.9; }
+.t3 { display: block; font-size: clamp(30px, 3.6vw, 64px); letter-spacing: 0.42em; margin-left: 1.6em; font-weight: 400; }
+.sub { margin-bottom: 26px; font-size: 12px; line-height: 1.75; letter-spacing: 0.02em; opacity: 0.78; font-weight: 300; }
+
+.budget { position: fixed; left: 5.5vw; bottom: 6vh; width: 330px; font-size: 11px; font-weight: 300; letter-spacing: 0.02em; pointer-events: none; }
+.lab { text-transform: uppercase; letter-spacing: 0.22em; font-size: 9.5px; opacity: 0.6; margin-bottom: 8px; }
+.big { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 22px; margin-bottom: 12px; }
+.big b { font-weight: 400; font-variant-numeric: tabular-nums; }
+.sep { opacity: 0.4; margin: 0 6px; }
+.budget table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.budget th { text-align: left; font-weight: 300; opacity: 0.5; padding-bottom: 5px; border-bottom: 1px solid rgba(246, 239, 230, 0.25); }
+.budget td { padding: 5px 0; border-bottom: 1px solid rgba(246, 239, 230, 0.1); position: relative; }
+.bar { position: absolute; left: 0; bottom: 0; height: 2px; background: #f2b27a; max-width: 70px; }
+.note { margin-top: 9px; opacity: 0.55; line-height: 1.6; }
+
+.caption { position: fixed; right: 5.5vw; bottom: 6vh; display: flex; gap: 14px; align-items: flex-start; font-size: 11px; line-height: 1.7; font-weight: 300; letter-spacing: 0.04em; text-align: right; opacity: 0.85; }
+.caption em { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 14px; }
+.rule { display: block; width: 44px; height: 1px; background: #f6efe6; margin-top: 8px; opacity: 0.7; }
+
+.hint { position: fixed; right: 5.5vw; top: 7vh; color: #1b2447; font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; opacity: 0.55; }
+
+@media (max-width: 640px) {
+  .budget { width: auto; right: 5.5vw; bottom: 4vh; }
+  .caption { display: none; }
+  .hint { top: auto; bottom: 1.5vh; }
+}
