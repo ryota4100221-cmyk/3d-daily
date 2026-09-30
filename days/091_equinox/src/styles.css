@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Inter:wght@300;400;500&display=swap');
+
+:root {
+  --ink: #04060c;
+  --paper: #e9e4d8;
+  --dim: #8a8e98;
+  --line: rgba(233, 228, 216, 0.16);
+  --gold: #d9c79c;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, #root { height: 100%; background: var(--ink); overflow: hidden; }
+body { color: var(--paper); font-family: Inter, 'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+
+.stage { position: fixed; inset: 0; cursor: ew-resize; user-select: none; }
+.stage canvas { display: block; }
+
+.top {
+  position: absolute; top: 34px; left: 56px; right: 56px;
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--dim);
+  pointer-events: none;
+}
+.top .mark { font-family: Marcellus, 'Cormorant Garamond', Georgia, serif; font-size: 17px; letter-spacing: 0.08em; text-transform: none; color: var(--paper); }
+.top nav { display: flex; gap: 34px; }
+.top nav .on { color: var(--paper); border-bottom: 1px solid var(--gold); padding-bottom: 4px; }
+
+.title { position: absolute; left: 56px; top: 24vh; width: 360px; pointer-events: none; }
+.kicker { font-size: 10.5px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold); margin-bottom: 22px; }
+.title h1 { font-family: Marcellus, 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: 92px; line-height: 0.9; letter-spacing: -0.02em; }
+.title h2 { font-family: Marcellus, 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: 23px; margin-top: 16px; color: var(--paper); opacity: 0.86; }
+.title .body { margin-top: 26px; font-size: 13px; line-height: 1.75; color: var(--dim); font-weight: 300; max-width: 320px; }
+
+.read { position: absolute; left: 56px; bottom: 64px; width: 280px; pointer-events: none; font-size: 11px; letter-spacing: 0.06em; }
+.read .row { display: flex; justify-content: space-between; padding: 7px 0; border-top: 1px solid var(--line); color: var(--dim); }
+.read .row b { font-weight: 500; color: var(--paper); font-variant-numeric: tabular-nums; }
+.read.near .row:nth-child(4) b { color: var(--gold); }
+.timeline { margin-top: 16px; display: block; }
+.timeline .axis { stroke: var(--line); stroke-width: 1; }
+.timeline .curve { fill: none; stroke: var(--dim); stroke-width: 1; opacity: 0.7; }
+.timeline .tick { stroke: var(--gold); stroke-width: 1; }
+.timeline .tlabel { fill: var(--dim); font-size: 9px; text-anchor: middle; letter-spacing: 0.04em; }
+.timeline .dot { fill: var(--gold); }
+.hint { margin-top: 10px; color: var(--dim); opacity: 0.7; font-size: 10.5px; }
+
+.coords {
+  position: absolute; right: 56px; bottom: 34px; display: flex; gap: 40px;
+  font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); pointer-events: none;
+}
+
+@media (max-width: 760px) {
+  .top, .title, .read { left: 20px; right: 20px; }
+  .title { top: 90px; width: auto; }
+  .title h1 { font-size: 60px; }
+  .title .body { display: none; }
+  .read { width: auto; bottom: 70px; }
+  .coords { right: 20px; left: 20px; flex-direction: column; gap: 4px; }
+}
