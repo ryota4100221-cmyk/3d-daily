@@ -1,0 +1,46 @@
+:root {
+  --paper: #f7f6f3;
+  --ink: #0e0e0e;
+  --mute: #8a8883;
+  --serif: 'Kozuka Mincho Pro', 'Hiragino Mincho ProN', 'Yu Mincho', 'Times New Roman', serif;
+  --sans: 'Helvetica Neue', Helvetica, Arial, 'Liberation Sans', sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--paper); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+.stage { position: fixed; inset: 0; }
+.scroll { height: 420vh; }
+
+.top {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 2;
+  display: flex; justify-content: space-between; padding: 26px 60px;
+  font-size: 12px; letter-spacing: 0.01em; pointer-events: none;
+}
+.top .mid { color: var(--mute); }
+
+.left {
+  position: fixed; left: 60px; bottom: 120px; width: 300px; z-index: 2; pointer-events: none;
+}
+.left .label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--mute); margin-bottom: 10px; }
+.left .body { font-family: var(--serif); font-size: 13px; line-height: 1.25; }
+
+.bottom {
+  position: fixed; left: 60px; right: 60px; bottom: 34px; z-index: 2; pointer-events: none;
+  display: flex; justify-content: space-between; align-items: flex-end;
+  border-top: 1px solid rgba(0,0,0,0.14); padding-top: 14px;
+}
+.state { display: flex; gap: 18px; align-items: baseline; }
+.state .k { font-size: 34px; letter-spacing: -0.05em; line-height: 0.75; }
+.state .v { font-family: var(--serif); font-size: 13px; color: #3a3936; }
+.read { display: flex; gap: 28px; align-items: center; font-size: 11px; }
+.read i { font-style: normal; color: var(--mute); text-transform: uppercase; letter-spacing: 0.12em; margin-right: 6px; }
+.read b { font-weight: 400; font-variant-numeric: tabular-nums; }
+.meter { width: 90px; height: 1px; background: rgba(0,0,0,0.15); display: block; }
+.meter em { display: block; height: 3px; margin-top: -1px; background: var(--ink); transform-origin: left; }
+
+@media (max-width: 760px) {
+  .top { padding: 18px 16px; }
+  .top .mid { display: none; }
+  .left { left: 16px; right: 16px; width: auto; bottom: 110px; }
+  .bottom { left: 16px; right: 16px; }
+  .state .v { display: none; }
+}
