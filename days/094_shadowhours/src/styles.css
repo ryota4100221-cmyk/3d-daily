@@ -1,0 +1,52 @@
+:root {
+  --paper: #f2f1ed;
+  --ink: #16161a;
+  --mute: #6d6c68;
+  --sans: 'Helvetica Neue', Helvetica, 'Liberation Sans', Arial, sans-serif;
+  --mono: 'SFMono-Regular', 'DejaVu Sans Mono', Menlo, monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, #root { width: 100%; height: 100%; background: var(--paper); color: var(--ink); overflow: hidden; }
+body { font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+.stage { position: fixed; inset: 0; }
+.stage canvas { display: block; }
+
+.head { position: absolute; left: 48px; top: 40px; max-width: 420px; pointer-events: none; }
+.mark { font-weight: 700; font-size: 13px; letter-spacing: -0.055em; }
+.kicker { margin-top: 28px; font-weight: 700; font-size: 10px; letter-spacing: 0.08em; color: var(--mute); }
+h1 { margin-top: 14px; font-weight: 500; font-size: 54px; line-height: 0.96; letter-spacing: -0.04em; }
+.lede { margin-top: 20px; font-size: 12.5px; line-height: 1.6; color: var(--mute); max-width: 330px; }
+
+.seasons { position: absolute; right: 48px; top: 40px; display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+.seasons button {
+  background: none; border: 0; font: 500 12px var(--sans); color: var(--mute); cursor: pointer;
+  display: flex; gap: 10px; align-items: baseline; letter-spacing: -0.01em;
+}
+.seasons button span { font: 10px var(--mono); }
+.seasons button.on { color: var(--ink); }
+.seasons button.on::after { content: ''; width: 18px; height: 1px; background: var(--ink); align-self: center; }
+
+.readout { position: absolute; right: 48px; bottom: 112px; width: 248px; font: 11px var(--mono); pointer-events: none; }
+.readout .row { display: flex; justify-content: space-between; padding: 3px 0; color: var(--ink); }
+.readout .head2 { color: var(--mute); }
+.readout .big { font: 500 40px var(--sans); letter-spacing: -0.03em; align-items: baseline; padding: 4px 0 6px; }
+.readout .big .unit { font: 10px var(--mono); color: var(--mute); letter-spacing: 0.08em; }
+.readout .rule { height: 1px; background: var(--ink); margin: 8px 0; opacity: 0.8; }
+.readout .strong { font-weight: 700; }
+.readout .dim { color: var(--mute); }
+
+.clock { position: absolute; left: 48px; right: 48px; bottom: 40px; pointer-events: none; }
+.track { position: relative; height: 1px; background: var(--ink); opacity: 0.85; }
+.tick { position: absolute; top: -4px; width: 1px; height: 9px; background: var(--ink); }
+.tick i { position: absolute; top: 14px; left: -7px; font: normal 10px var(--mono); color: var(--mute); }
+.cursor { position: absolute; top: -10px; width: 9px; height: 21px; margin-left: -4px; background: var(--ink); }
+.hint { margin-top: 30px; font: 10px var(--mono); color: var(--mute); letter-spacing: 0.02em; }
+
+@media (max-width: 760px) {
+  .head { left: 16px; top: 20px; max-width: calc(100% - 32px); }
+  h1 { font-size: 36px; }
+  .lede { display: none; }
+  .seasons { right: 16px; top: auto; bottom: 330px; }
+  .readout { right: 16px; bottom: 100px; width: 200px; }
+  .clock { left: 16px; right: 16px; }
+}
