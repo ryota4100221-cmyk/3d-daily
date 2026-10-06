@@ -1,0 +1,39 @@
+:root {
+  --bg: #ffffff;
+  --ink: #0b2e33;
+  --cyan: #07d0d8;
+  --mute: rgba(11, 46, 51, 0.55);
+  --rule: rgba(7, 208, 216, 0.55);
+  --sans: 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, #root { height: 100%; background: var(--bg); color: var(--ink); font-family: var(--sans); overflow: hidden; }
+.stage { position: fixed; inset: 0; cursor: crosshair; user-select: none; touch-action: none; }
+.stage canvas { display: block; }
+
+.top { position: absolute; top: 30px; left: 56px; right: 56px; display: flex; justify-content: space-between; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mute); pointer-events: none; }
+
+.title { position: absolute; left: 56px; bottom: 44px; pointer-events: none; }
+.kicker { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cyan); margin-bottom: 14px; }
+.title h1 { font-size: 46px; font-weight: 400; line-height: 1.02; letter-spacing: 0.02em; }
+
+.spec { position: absolute; right: 56px; bottom: 40px; width: 330px; pointer-events: none; font-size: 11px; }
+.spec div { display: flex; justify-content: space-between; align-items: baseline; padding: 6px 0; border-top: 1px solid var(--rule); }
+.spec div:last-child { border-bottom: 1px solid var(--rule); }
+.spec dt { color: var(--mute); letter-spacing: 0.02em; }
+.spec dd { font-variant-numeric: tabular-nums; }
+.spec dd.big { font-size: 15px; }
+
+.lede { position: absolute; left: 50%; bottom: 44px; width: 340px; margin-left: -150px; font-size: 12px; line-height: 2; color: var(--mute); pointer-events: none; }
+.lede em { font-style: normal; color: var(--ink); }
+
+@media (max-width: 1180px) {
+  .lede { display: none; }
+}
+@media (max-width: 760px) {
+  .top { left: 16px; right: 16px; top: 16px; }
+  .top span:nth-child(n + 2) { display: none; }
+  .title { left: 16px; bottom: auto; top: 44px; }
+  .title h1 { font-size: 30px; }
+  .spec { left: 16px; right: 16px; width: auto; bottom: 16px; }
+}
