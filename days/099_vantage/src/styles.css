@@ -1,0 +1,42 @@
+:root {
+  --bg: #b7bcbf;
+  --ink: #1d2226;
+  --red: #e7152d;
+  --mute: rgba(29, 34, 38, 0.58);
+  --rule: rgba(29, 34, 38, 0.2);
+  --sans: 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, #root { height: 100%; background: var(--bg); color: var(--ink); font-family: var(--sans); overflow: hidden; }
+.stage { position: fixed; inset: 0; cursor: crosshair; user-select: none; touch-action: none; }
+.stage canvas { display: block; }
+
+.top { position: absolute; top: 30px; left: 56px; right: 56px; display: flex; justify-content: space-between; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mute); pointer-events: none; }
+
+.title { position: absolute; left: 56px; top: 92px; pointer-events: none; }
+.kicker { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red); margin-bottom: 18px; }
+.title h1 { font-size: 64px; font-weight: 500; line-height: 0.96; letter-spacing: -0.035em; }
+.sub { margin-top: 22px; font-size: 12px; line-height: 1.8; color: var(--mute); }
+
+.lede { position: absolute; left: 56px; bottom: 96px; width: 300px; font-size: 12px; line-height: 1.9; color: var(--mute); pointer-events: none; }
+.lede em { font-style: normal; color: var(--ink); }
+
+.spec { position: absolute; left: 56px; top: 330px; width: 300px; pointer-events: none; font-size: 11px; }
+.spec div { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 7px 0; border-top: 1px solid var(--rule); }
+.spec div:last-child { border-bottom: 1px solid var(--rule); }
+.spec dt { color: var(--mute); }
+.spec dd { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.spec dd.big { font-size: 15px; }
+.spec dd.ok { color: var(--red); }
+
+.foot { position: absolute; left: 56px; right: 56px; bottom: 34px; display: flex; justify-content: space-between; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mute); pointer-events: none; }
+.state.on { color: var(--red); }
+
+@media (max-width: 760px) {
+  .top, .foot { left: 20px; right: 20px; }
+  .top span:last-child, .foot span:last-child { display: none; }
+  .title { left: 20px; top: 64px; }
+  .title h1 { font-size: 42px; }
+  .spec { left: 20px; right: 20px; top: auto; bottom: 64px; width: auto; }
+  .lede { display: none; }
+}
