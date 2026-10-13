@@ -75,6 +75,10 @@ node scripts/shoot.mjs ref <URL> days/NNN_<slug>        # → ref/ref.png ＋ re
 - スタック：Vite + React + @react-three/fiber + @react-three/drei（必要なら postprocessing / rapier）。
 - 書体：再現元と同じ書体が無料で手に入らなければ、**近い骨格**のものを `public/` に実 .ttf で置く（data URI 禁止＝下の罠）。
 - 画面に置いてよい文字＝**再現元の構図にある文字だけ**。加えて隅に `Day NNN — after <サイト名>` の1行は置いてよい。
+- 🔴 **再現するのは見た目の作り方であって、他社のブランドではない。** ロゴ・社名・商品名・パッケージの絵柄・キャッチコピーは**架空のものに差し替える**
+  （公開デモは誰でも開ける GitHub Pages＝他社の商標を monaka の練習作として公開しない）。
+  位置・大きさ・書体の骨格・字数は再現元に合わせてよい（例：`CIAO ENERGY`→`MIDDLE TONIC`、`DOUBLE LITCHI`→`QUIET YUZU`）。
+  再現元の名前を出してよいのは隅の `after <サイト名>` の1行と NOTES.md だけ。（2026-10-14 Day104 の試走で、缶のロゴと商品名をそのまま再現していた）
 
 ### 5. 並べて周回する（最低6周・本体）
 

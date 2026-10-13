@@ -106,7 +106,7 @@ if rp.exists() and mp.exists():
     cr = [x - lr for x in gr]
     cm = [x - lm for x in gm]
     dist = sum(abs(a - b) for a, b in zip(cr, cm)) / len(cr) / 255
-    row("layout", f"明度配置の距離 {dist:.3f}（較正 096〜103 で 0.055〜0.119＝弁別力は弱い。数字として載せるだけ）", "⚠️" if dist > 0.25 else "")
+    row("layout", f"明度配置の距離 {dist:.3f}（旧方式 096〜103 は 0.055〜0.119／新方式 104 は 0.015）", "⚠️" if dist > 0.25 else "")
     if dist > 0.25:
         warns.append(f"layout: 明度配置が再現元から遠い（{dist:.3f}）。構図を再現元に寄せたか REVIEW で確認")
 
