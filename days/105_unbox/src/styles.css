@@ -1,0 +1,28 @@
+@font-face { font-family: 'Bricolage'; src: url('./fonts/Bricolage.ttf') format('truetype'); font-weight: 200 800; font-stretch: 75% 100%; }
+@font-face { font-family: 'Caslon'; src: url('./fonts/LibreCaslon.ttf') format('truetype'); font-weight: 400 700; }
+@font-face { font-family: 'Caveat'; src: url('./fonts/Caveat.ttf') format('truetype'); font-weight: 400 700; }
+html, body, #root { margin: 0; height: 100%; background: #FFD24A; overflow: hidden; }
+body { font-family: 'Bricolage', sans-serif; color: #000; -webkit-font-smoothing: antialiased; }
+.bg { position: fixed; inset: 0; width: 100%; height: 100%; }
+.gl { position: fixed !important; inset: 0; }
+.gl-back { filter: blur(0.9px); }
+.logo-mark { width: 26px; height: 30px; margin-right: -4px; align-self: center; }
+canvas { display: block; }
+.ui { position: fixed; inset: 0; pointer-events: none; }
+.top { position: absolute; left: 0; right: 0; top: 19px; height: 42px; }
+.logo { position: absolute; left: 20px; top: -6px; display: flex; align-items: flex-end; gap: 6px; }
+.logo-word { font-family: 'Caslon', serif; font-weight: 400; font-size: 29px; letter-spacing: -0.02em; }
+.logo-sub { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; line-height: 1.05; padding-bottom: 7px; }
+.pills { position: absolute; left: 475px; display: flex; gap: 6px; }
+.pill { display: inline-flex; align-items: center; height: 42px; padding: 0 12px; border-radius: 21px; background: #F9EC8E; font-size: 17px; font-weight: 650; letter-spacing: -0.025em; }
+.pill-or { background: #F9A220; border-radius: 6px; font-size: 14px; font-weight: 600; padding: 0 0 0 15px; }
+.pill-or i { font-style: normal; display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; margin-left: 14px; border-left: 1px solid #FFD24A; }
+.right { position: absolute; right: 18px; display: flex; gap: 6px; align-items: center; }
+.dot { width: 36px; height: 36px; border-radius: 50%; background: #000; color: #FFD24A; display: inline-flex; align-items: center; justify-content: center; font-size: 15px; }
+.hero { position: absolute; left: 13px; top: 166px; margin: 0; font-weight: 800; font-stretch: 100%; font-size: 128px; line-height: 98px; letter-spacing: -0.012em; font-variation-settings: 'opsz' 96; -webkit-text-stroke: 1.6px #000; }
+.lede { position: absolute; left: 15px; top: 490px; width: 318px; margin: 0; font-size: 16px; line-height: 21.5px; font-weight: 580; letter-spacing: -0.015em; }
+.cta { position: absolute; left: 15px; top: 590px; display: inline-flex; align-items: center; height: 42px; padding-left: 15px; background: #FF008C; color: #fff; border-radius: 4px; font-size: 14px; font-weight: 600; }
+.cta i { font-style: normal; display: inline-flex; justify-content: center; align-items: center; width: 42px; height: 42px; margin-left: 14px; border-left: 1px solid #FFD24A; }
+.hand { position: absolute; left: 1282px; top: 385px; margin: 0; font-family: 'Caveat'; font-weight: 700; font-size: 28px; line-height: 24px; color: #6B5F8F; transform: rotate(4deg); }
+.a11y { position: absolute; right: 25px; bottom: 40px; width: 60px; height: 60px; }
+.credit { position: absolute; left: 15px; bottom: 12px; margin: 0; font-size: 12px; font-weight: 500; opacity: 0.6; }
