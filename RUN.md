@@ -74,11 +74,18 @@ node scripts/shoot.mjs ref <URL> days/NNN_<slug>        # → ref/ref.png ＋ re
 - `engine/` が要る日は**必要なファイルだけ `src/` にコピー**。相対 import は dev で 403→500 になる（`engine/README.md`）。
 - スタック：Vite + React + @react-three/fiber + @react-three/drei（必要なら postprocessing / rapier）。
 - 書体：再現元と同じ書体が無料で手に入らなければ、**近い骨格**のものを `public/` に実 .ttf で置く（data URI 禁止＝下の罠）。
-- 画面に置いてよい文字＝**再現元の構図にある文字だけ**。加えて隅に `Day NNN — after <サイト名>` の1行は置いてよい。
+- 画面に置いてよい文字＝**再現元の構図にある文字だけ**。加えて左下に下の「作品の札」を置く。
+- 🔴 **左下に「作品の札」を必ず出す**（2026-10-16 追加）。再現元をナビや Log-in ボタンまで丸ごと再現するので、
+  隅の小さな1行だけだと **Slack のリンクから開いた人が「知らない通販サイトに飛ばされた」と読む**（Day 105 で Ryota が実際にそう読んだ）。
+  - 黒地の札（地が暗い日は白地）・左下・`<a className="credit" href="../../">`（押すと一覧へ戻る）・3行：
+    `3D Daily` ／ `Day NNN — <題>` ／ `A study after <サイト名>. Brand and copy are fictional.`
+  - `index.html` の `<title>` は `3D Daily — Day NNN · <題> (after <サイト名>)`。<題> は NOTES.md の見出しと同じにする
+    （Day 105 はタブ名が途中の題「Paper Weather」のまま公開されていた）
+  - Day 105 の `src/App.jsx` / `src/styles.css` の `.credit` が実例。`check.py` の `label` 行が機械で見る
 - 🔴 **再現するのは見た目の作り方であって、他社のブランドではない。** ロゴ・社名・商品名・パッケージの絵柄・キャッチコピーは**架空のものに差し替える**
   （公開デモは誰でも開ける GitHub Pages＝他社の商標を monaka の練習作として公開しない）。
   位置・大きさ・書体の骨格・字数は再現元に合わせてよい（例：`CIAO ENERGY`→`MIDDLE TONIC`、`DOUBLE LITCHI`→`QUIET YUZU`）。
-  再現元の名前を出してよいのは隅の `after <サイト名>` の1行と NOTES.md だけ。（2026-10-14 Day104 の試走で、缶のロゴと商品名をそのまま再現していた）
+  再現元の名前を出してよいのは左下の作品の札・`<title>`・NOTES.md だけ。（2026-10-14 Day104 の試走で、缶のロゴと商品名をそのまま再現していた）
 
 ### 5. 並べて周回する（最低6周・本体）
 

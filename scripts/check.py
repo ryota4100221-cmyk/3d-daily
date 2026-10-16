@@ -16,6 +16,8 @@
 #   ground   地の明度が再現元と逆になっていないか（平均輝度の差）
 #   layout   8×8 の明度配置が再現元とどれだけ離れているか（「見た目で再現」の数字）
 #   hud      数字を含む文字要素が再現元より大きく多くないか（数値パネル型の再発防止）
+#   label    作品の札（左下・3D Daily・after・fictional・一覧へのリンク）と <title> が NOTES の題と揃っているか
+#            （2026-10-16：Day 105 が「知らない通販サイト」と読まれた／タブ名が途中の題のまま公開された）
 #
 # 🔴 0件でも数字を全部出す（数字を添えないガードは静かにオフになる＝feedback_guard_needs_counter）。
 import json, re, sys
@@ -118,6 +120,27 @@ if rj and mj:
         v = "🔴"
         reds.append(f"hud: 数字を含む文字要素が再現元より {extra} 個多い＝数値パネル型。再現元に無い計測表示は画面から外す（NOTES に書く）。意図なら <!-- HUD: 理由 -->")
     row("hud", f"数字を含む文字要素 再現元 {rj['digitBlocks']} ／ 自作 {mj['digitBlocks']}", v)
+
+# --- label（作品の札と <title>）
+src = "\n".join(f.read_text() for f in (day / "src").glob("*.jsx")) if (day / "src").exists() else ""
+html = (day / "index.html").read_text() if (day / "index.html").exists() else ""
+tm = re.search(r"<title>([^<]*)</title>", html)
+title = tm.group(1) if tm else ""
+hm = re.search(r"^# Day \d+ — (.+?)[（(]after", notes, re.M)
+theme = hm.group(1).strip() if hm else ""
+need = {
+    "札の className=\"credit\"": 'className="credit"' in src,
+    "札に 3D Daily": "3D Daily" in src,
+    "札に after <サイト名>": re.search(r"after [A-Z0-9]", src) is not None,
+    "札に fictional": "fictional" in src,
+    "札から一覧へ href=\"../../\"": 'href="../../"' in src,
+    "<title> が 3D Daily — Day": title.startswith("3D Daily — Day"),
+    "<title> に NOTES の題": bool(theme) and theme in title,
+}
+miss = [k for k, ok in need.items() if not ok]
+if miss:
+    reds.append("label: 作品の札／タブ名が足りない → " + "、".join(miss) + "（RUN.md §4「作品の札」）")
+row("label", f"{len(need) - len(miss)}/{len(need)}  title=「{title}」 題=「{theme or '見出しから取れず'}」", "🔴" if miss else "")
 
 print(f"3D Daily check — {day.name}")
 print("\n".join(rows))
