@@ -1,0 +1,24 @@
+@font-face { font-family: 'Montserrat'; src: url('./fonts/Montserrat-SemiBold.ttf') format('truetype'); font-weight: 600; }
+@font-face { font-family: 'Montserrat'; src: url('./fonts/Montserrat-Bold.ttf') format('truetype'); font-weight: 700; }
+html, body, #root { margin: 0; height: 100%; background: #000; overflow: hidden; }
+body { font-family: 'Montserrat', sans-serif; color: #fff; -webkit-font-smoothing: antialiased; }
+.gl { position: fixed !important; inset: 0; }
+canvas { display: block; }
+.ui { position: fixed; inset: 0; pointer-events: none; }
+.top { position: absolute; left: 0; right: 0; top: 28px; height: 26px; color: #EFE3C8; }
+.logo { color: #E8D3A6; }
+.logo { position: absolute; left: 56px; top: 2px; display: flex; align-items: center; gap: 4px; font-weight: 600; font-size: 19px; letter-spacing: 0.01em; }
+.logo-mark { width: 30px; height: 20px; }
+.nav { position: absolute; left: 500px; top: 2px; display: flex; gap: 32px; font-size: 14.5px; font-weight: 700; letter-spacing: 0.035em; }
+.nav i { font-style: normal; font-weight: 400; font-size: 21px; line-height: 1; margin-left: 4px; position: relative; top: 1px; }
+.nav span { display: inline-flex; align-items: center; }
+.lang { position: absolute; left: 1315px; top: 2px; font-size: 14.5px; font-weight: 700; display: flex; gap: 6px; }
+.lang u { text-underline-offset: 4px; }
+.lang b { font-weight: 300; opacity: 0.7; }
+.lang em { font-style: normal; opacity: 0.55; }
+.lede { position: absolute; left: 1000px; top: 772px; margin: 0; font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif; font-weight: 700; font-size: 23px; line-height: 41px; letter-spacing: -0.01em; color: #fff; }
+/* 作品だと分かる札（2026-10-16）：地が暗い日は白地 */
+.credit { position: absolute; left: 15px; bottom: 15px; z-index: 5; display: flex; flex-direction: column; gap: 2px; padding: 10px 14px; border-radius: 10px; background: #fff; color: #111; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600; line-height: 1.35; text-decoration: none; pointer-events: auto; }
+.credit b { font-weight: 700; margin-right: 6px; }
+.credit span { font-size: 11px; opacity: 0.65; font-weight: 600; }
+.credit:hover { background: #F2E6CF; }
