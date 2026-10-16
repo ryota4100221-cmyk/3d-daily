@@ -54,7 +54,10 @@ export default function App() {
           <circle cx="30" cy="15.5" r="3.2" fill="#fff" stroke="none" />
           <path d="M17 23 L30 26 L43 23 M30 26 L30 35 L23 47 M30 35 L37 47" />
         </svg>
-        <p className="credit">Day 105 — after Aardvark Book Club</p>
+        <a className="credit" href="../../">
+          <b>3D Daily</b> Day 105 — Worth Passing Around
+          <span>A study after Aardvark Book Club. Brand and copy are fictional.</span>
+        </a>
       </div>
     </>
   )
