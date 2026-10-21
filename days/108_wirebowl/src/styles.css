@@ -1,0 +1,38 @@
+@font-face { font-family: 'Garamond'; src: url('./fonts/EBGaramond.ttf') format('truetype'); font-weight: 400 800; }
+@font-face { font-family: 'Inter'; src: url('./fonts/Inter.ttf') format('truetype'); font-weight: 100 900; }
+@font-face { font-family: 'Brush'; src: url('./fonts/Kaushan.ttf') format('truetype'); }
+html, body, #root { margin: 0; height: 100%; background: #232323; overflow: hidden; }
+body { color: #E8E4DC; -webkit-font-smoothing: antialiased; }
+.ground { position: fixed; inset: 0; background:
+  radial-gradient(38% 34% at 9% 14%, rgba(255,255,255,0.055), rgba(255,255,255,0) 72%),
+  radial-gradient(30% 26% at 30% 55%, rgba(255,255,255,0.03), rgba(255,255,255,0) 70%),
+  radial-gradient(26% 30% at 70% 22%, rgba(255,255,255,0.03), rgba(255,255,255,0) 70%),
+  radial-gradient(34% 30% at 55% 85%, rgba(255,255,255,0.03), rgba(255,255,255,0) 70%),
+  radial-gradient(28% 34% at 88% 60%, rgba(0,0,0,0.10), rgba(0,0,0,0) 70%),
+  radial-gradient(120% 110% at 50% 45%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.16) 100%),
+  #252525; }
+.mottle { position: fixed; inset: 0; width: 100%; height: 100%; opacity: 0.075; mix-blend-mode: overlay; }
+.gl { position: fixed !important; inset: 0; }
+canvas { display: block; }
+.ui { position: fixed; inset: 0; pointer-events: none; }
+
+.logo { position: absolute; left: 48px; top: 6px; font-family: 'Brush', cursive; font-size: 33px; line-height: 48px; letter-spacing: 0.06em; color: #F0ECE4; filter: url(#rough); -webkit-text-stroke: 1.2px #F0ECE4; top: 8px; text-decoration: none; }
+.nav { position: absolute; top: 14px; left: 825px; display: flex; gap: 0; font-family: 'Garamond', serif; font-size: 21px; line-height: 30px; letter-spacing: 0.02em; color: #E8E4DC; }
+.nav span:nth-child(1) { width: 119px; }
+.nav span:nth-child(2) { width: 94px; }
+.nav span:nth-child(3) { width: 89px; }
+.nav span:nth-child(4) { width: 107px; }
+.lang { position: absolute; top: 21px; left: 1338px; margin: 0; font-family: 'Inter', sans-serif; font-size: 14px; line-height: 18px; color: #E8E4DC; display: flex; gap: 10px; }
+.lang span { color: #777; }
+.lang i { font-style: normal; color: #ccc; }
+.lang u { text-underline-offset: 3px; }
+.scroll { position: absolute; left: 1401px; top: 725px; margin: 0; writing-mode: vertical-rl; font-family: 'Inter', sans-serif; font-size: 11.5px; letter-spacing: 0.08em; color: #E8E4DC; }
+.scroll-line { position: absolute; left: 1408px; top: 790px; width: 1px; height: 120px; background: #E8E4DC; }
+.red { position: absolute; left: 1180px; top: 881px; width: 4400px; height: 4400px; margin-left: -2200px; border-radius: 50%; background: #E62B3A; }
+
+/* 作品だと分かる札（2026-10-16）：地が暗い日は白地 */
+.credit { position: absolute; left: 15px; bottom: 15px; z-index: 5; display: flex; flex-direction: column; gap: 2px; padding: 10px 14px; border-radius: 10px; background: #F4F1EA; color: #1c1c1c; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; line-height: 1.35; text-decoration: none; pointer-events: auto; }
+.credit b { font-weight: 600; font-size: 11px; opacity: 0.7; letter-spacing: 0.04em; }
+.credit span { font-size: 11px; opacity: 0.65; }
+.credit .t { font-size: 13px; opacity: 1; }
+.credit:hover { background: #E62B3A; color: #fff; }
