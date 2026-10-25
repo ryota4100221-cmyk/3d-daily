@@ -27,6 +27,7 @@ Day 031 から Day 048 まで18日連続で、この1本の技術スレッドだ
 | `visfit.js` | 遮蔽可視性の当てはめ（クリップ率・エッジ） | Day 047 |
 | `noise.js` | 3D value-noise ボリューム | Day 031 |
 | `palette.js` | ⚠️ 混在。`FROXEL` / `ATLAS` / `SCAN_STEPS` はエンジン設定、`LIGHT` / `WINDOW` / `SURF` は**あの作品固有の値** | — |
+| `bake/` | **Blender で光を焼く → three/R3F で「素材の色 × 焼いた光」**（bake.py・bake.sh・baked.js・見本）。使い方は `bake/README.md` | 2026-10-25 Bake Lab |
 
 ## 使い方 — 🔴 相対 import しない。必要なファイルだけ `src/` にコピーする
 

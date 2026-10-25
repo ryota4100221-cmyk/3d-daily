@@ -6,3 +6,7 @@ _site/
 days/*/shots/
 days/*/ref/
 logs/
+
+# engine/bake の圧縮前原本（公開しない）
+.bake-raw/
+.bake-tmp/
