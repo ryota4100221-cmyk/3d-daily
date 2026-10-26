@@ -1,0 +1,100 @@
+{
+ "lmax": 6.0,
+ "samples": 256,
+ "density": 260,
+ "states": [
+  "day"
+ ],
+ "objects": {
+  "slabL": {
+   "kind": "map",
+   "res": 2048,
+   "day": {
+    "p99_5": 1.506,
+    "max": 1.599
+   }
+  },
+  "slabR": {
+   "kind": "map",
+   "res": 2048,
+   "day": {
+    "p99_5": 1.497,
+    "max": 1.594
+   }
+  },
+  "backL": {
+   "kind": "map",
+   "res": 2048,
+   "day": {
+    "p99_5": 1.482,
+    "max": 1.508
+   }
+  },
+  "backR": {
+   "kind": "map",
+   "res": 2048,
+   "day": {
+    "p99_5": 1.481,
+    "max": 1.506
+   }
+  },
+  "atrium": {
+   "kind": "map",
+   "res": 2048,
+   "day": {
+    "p99_5": 1.426,
+    "max": 1.543
+   }
+  },
+  "returnL": {
+   "kind": "map",
+   "res": 512,
+   "day": {
+    "p99_5": 1.073,
+    "max": 1.161
+   }
+  },
+  "returnR": {
+   "kind": "map",
+   "res": 512,
+   "day": {
+    "p99_5": 1.431,
+    "max": 1.569
+   }
+  },
+  "slabBack": {
+   "kind": "map",
+   "res": 1024,
+   "day": {
+    "p99_5": 1.417,
+    "max": 1.493
+   }
+  },
+  "ground": {
+   "kind": "map",
+   "res": 2048,
+   "day": {
+    "p99_5": 1.487,
+    "max": 1.607
+   }
+  },
+  "canopy": {
+   "kind": "map",
+   "res": 1024,
+   "day": {
+    "p99_5": 1.535,
+    "max": 1.566
+   }
+  }
+ },
+ "lights": {
+  "sun": {
+   "state": null,
+   "pos": [
+    0.0,
+    0.0,
+    -0.0
+   ]
+  }
+ }
+}
