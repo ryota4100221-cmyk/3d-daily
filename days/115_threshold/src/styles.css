@@ -1,0 +1,31 @@
+@font-face { font-family: 'Corm'; src: url('./fonts/CormorantGaramond.ttf') format('truetype'); font-weight: 300 700; }
+@font-face { font-family: 'Man'; src: url('./fonts/Manrope.ttf') format('truetype'); font-weight: 200 800; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #0a0905; }
+body { font-family: 'Man', sans-serif; }
+.stage { position: fixed; inset: 0; overflow: hidden; }
+.stage canvas { display: block; }
+.scroll { height: 320vh; }
+
+.frames i { position: absolute; border: 1px solid rgba(240, 232, 200, 0.16); pointer-events: none; }
+.frames i.v { border: 0; border-left: 1px solid rgba(240, 232, 200, 0.3); width: 0; }
+
+.num { position: absolute; left: 0; top: 0; margin: 0; width: 100%; height: 100%; pointer-events: none;
+  font-family: 'Corm', serif; font-weight: 400; font-variant-numeric: lining-nums; color: #d9d2a0;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 530px, rgba(0,0,0,0.45) 590px, rgba(0,0,0,0) 640px);
+  mask-image: linear-gradient(to bottom, #000 0, #000 530px, rgba(0,0,0,0.45) 590px, rgba(0,0,0,0) 640px);
+  --split: 0px; }
+.num span { position: absolute; font-size: 470px; line-height: 1; top: 195px; }
+.num .d1 { left: 435px; transform: translateX(calc(var(--split) * -1)); }
+.num .d2 { left: 605px; }
+.num .d3 { left: 808px; transform: translateX(var(--split)); }
+
+.side { position: absolute; left: 1045px; top: 552px; margin: 0; font-size: 13.5px; line-height: 18px; color: #e6dfc4; font-weight: 400; }
+.foot { position: absolute; left: 0; right: 0; top: 855px; margin: 0; text-align: center; font-size: 12.5px; color: rgba(150, 140, 118, 0.55); letter-spacing: 0.01em; }
+
+.credit { position: absolute; left: 15px; bottom: 15px; z-index: 5; display: flex; flex-direction: column; gap: 2px; padding: 10px 14px; border-radius: 10px; background: #f4f0e4; color: #111; font-family: 'Man', sans-serif; font-size: 13px; font-weight: 600; line-height: 1.35; text-decoration: none; }
+.credit b { font-weight: 600; font-size: 11px; opacity: 0.7; letter-spacing: 0.04em; }
+.credit span { font-size: 11px; opacity: 0.75; }
+.credit .t { font-size: 13px; opacity: 1; }
+.credit:hover { background: #fff; }
+.dusk { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to bottom, rgba(10,9,5,0) 55%, rgba(10,9,5,0.35) 78%, rgba(10,9,5,0.7) 100%); }
