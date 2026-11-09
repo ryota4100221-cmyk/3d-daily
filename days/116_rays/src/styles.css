@@ -1,0 +1,39 @@
+@font-face { font-family: 'JPSerif'; src: url('/serif-jp.otf') format('opentype'); font-weight: 300; }
+@font-face { font-family: 'Inter'; src: url('/inter-regular.ttf') format('truetype'); font-weight: 300; }
+@font-face { font-family: 'Inter'; src: url('/inter-medium.ttf') format('truetype'); font-weight: 500; }
+@font-face { font-family: 'Inter'; src: url('/inter-semibold.ttf') format('truetype'); font-weight: 600; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, #root { width: 100%; height: 100%; overflow: hidden; background: #2a2525; }
+body { font-family: 'Inter', sans-serif; color: #fff; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; cursor: pointer; }
+.stage { position: fixed; inset: 0; }
+.gl { position: absolute !important; inset: 0; z-index: 2; pointer-events: none; }
+
+.copy { position: absolute; z-index: 1; left: 0; right: 0; top: 160px; text-align: center; font-family: 'JPSerif', serif; font-weight: 300; color: #fff; font-size: 136px; line-height: 145px; letter-spacing: 0; }
+.copy .l { display: block; }
+
+.fade { position: absolute; z-index: 3; left: 0; right: 0; bottom: 0; height: 200px; pointer-events: none; background: linear-gradient(to bottom, rgba(42,37,37,0), rgba(42,37,37,0.6) 55%, rgba(42,37,37,0.95)); }
+
+.nav { position: absolute; z-index: 4; inset: 0 0 auto 0; height: 80px; }
+.logo { position: absolute; left: 35px; top: 20px; display: flex; align-items: center; gap: 6px; font-weight: 600; font-size: 17px; letter-spacing: 0.01em; }
+.pill { position: absolute; left: 452px; top: 16px; width: 521px; height: 45px; display: flex; align-items: center; justify-content: space-around; padding: 0 22px; background: rgba(22,20,20,0.92); border: 1px solid #4a4646; border-radius: 3px; font-weight: 500; font-size: 15px; letter-spacing: 0.02em; }
+.join { position: absolute; left: 1258px; top: 19px; width: 94px; height: 38px; display: grid; place-items: center; font-size: 15px; border: 2px solid transparent; border-radius: 2px; background: linear-gradient(#2a2525, #2a2525) padding-box, linear-gradient(90deg, #a8d8e0, #d8e38a, #f5c08a) border-box; }
+.lang { position: absolute; left: 1374px; top: 27px; font-size: 15px; font-weight: 500; }
+
+.cta { position: absolute; z-index: 4; left: 579px; top: 693px; width: 254px; height: 63px; }
+.cta i { position: absolute; display: block; background: #050404; }
+.cta .sh1 { left: 3px; top: 12px; width: 251px; height: 63px; }
+.cta .sh2 { left: -11px; top: 12px; width: 20px; height: 31px; }
+.cta .sh2::after { content: ''; position: absolute; left: 14px; top: 31px; width: 14px; height: 32px; background: #050404; }
+.cta .tab { left: 250px; top: 30px; width: 18px; height: 33px; background: #fa9c86; z-index: 1; }
+.cta span { position: absolute; z-index: 2; clip-path: polygon(0 0, 100% 0, 100% 100%, 16px 100%, 16px 50%, 0 50%); inset: 0; display: grid; place-items: center; font-weight: 600; font-size: 22px; color: #1d1b1b; background: linear-gradient(90deg, #b6eaf4 0%, #dff27a 28%, #ffffff 52%, #ffffff 60%, #fbe27a 76%, #fba48a 100%); }
+
+.foot { position: absolute; z-index: 4; left: 47px; right: 62px; top: 860px; display: flex; justify-content: space-between; font-size: 13px; }
+
+.credit { position: absolute; left: 15px; bottom: 15px; z-index: 6; display: flex; flex-direction: column; gap: 2px; padding: 10px 14px; border-radius: 10px; background: #f4f0ea; color: #111; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; line-height: 1.35; text-decoration: none; }
+.credit b { font-weight: 600; font-size: 11px; opacity: 0.7; letter-spacing: 0.04em; }
+.credit span { font-size: 11px; opacity: 0.75; font-weight: 500; }
+.credit .t { font-size: 13px; opacity: 1; font-weight: 600; }
+.credit:hover { background: #fff; }
+
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
