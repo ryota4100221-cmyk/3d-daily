@@ -1,0 +1,25 @@
+@font-face { font-family: 'Nav'; src: url('/ArchivoNav.ttf') format('truetype'); }
+@font-face { font-family: 'Head'; src: url('/ArchivoHead.ttf') format('truetype'); }
+@font-face { font-family: 'Sans'; src: url('/Inter.ttf') format('truetype'); font-weight: 100 900; }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, #root { width: 100%; height: 100%; background: #e3a898; overflow: hidden; }
+.stage { position: relative; width: 100%; height: 100%; font-family: 'Sans', sans-serif; }
+.gl { position: absolute !important; inset: 0; }
+
+.top { position: absolute; left: 14px; right: 14px; top: 14px; height: 65px; background: #eae6e3; border-radius: 5px; z-index: 2; color: #2a2522; }
+.nav { position: absolute; left: 32px; top: 0; height: 65px; display: flex; align-items: center; font-family: 'Nav', sans-serif; font-size: 15.5px; letter-spacing: 0.085em; text-transform: uppercase; }
+.nav i { display: inline-block; width: 1.3px; height: 22px; background: #2a2522; margin: 0 15px; }
+.logo { position: absolute; left: 50%; top: 7px; transform: translateX(-50%); text-align: center; font-family: 'Head', sans-serif; text-transform: uppercase; line-height: 1; }
+.logo .l1 { display: block; font-size: 25px; letter-spacing: 0.01em; }
+.logo .l2 { display: flex; align-items: center; justify-content: center; gap: 5px; margin-top: 2px; }
+.logo .l2 b { font-size: 21px; font-weight: 400; }
+.logo .l2 em { font-style: normal; font-family: 'Nav', sans-serif; font-size: 5px; letter-spacing: 0.08em; border-top: 1px solid #2a2522; border-bottom: 1px solid #2a2522; padding: 1px 2px; width: 34px; }
+.cta { position: absolute; right: 65px; top: 3px; width: 133px; height: 59px; background: #2a2522; color: #eae6e3; border-radius: 3px; display: flex; align-items: center; justify-content: center; font-family: 'Nav', sans-serif; font-size: 15px; letter-spacing: 0.03em; text-transform: uppercase; }
+.search { position: absolute; right: 2px; top: 2px; width: 60px; height: 61px; border-radius: 4px; background: #e3a898; border: 2px solid #eae6e3; display: flex; align-items: center; justify-content: center; }
+
+.credit { position: absolute; left: 15px; bottom: 15px; z-index: 6; display: flex; flex-direction: column; gap: 2px; padding: 10px 14px; border-radius: 10px; background: #111; color: #fff; font-size: 13px; font-weight: 500; line-height: 1.35; text-decoration: none; font-family: 'Sans', sans-serif; }
+.credit b { font-weight: 500; font-size: 11px; opacity: 0.7; letter-spacing: 0.04em; }
+.credit span { font-size: 11px; opacity: 0.8; }
+.credit .t { font-size: 13px; opacity: 1; font-weight: 700; }
+.credit:hover { background: #333; }
